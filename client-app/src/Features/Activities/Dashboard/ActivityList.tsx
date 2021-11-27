@@ -11,9 +11,9 @@ export default function ActivityList({activities, selectActivity}: Props) {
     return (
         <Segment>
             <Item.Group divided>
-                {activities.map(activity => {
+                {activities.map((activity, index) => {
                     return(
-                        <Item>
+                        <Item key={index}>
                         <Item.Content>
                             <Item.Header as="a">{activity.title}</Item.Header>
                             <Item.Meta>{activity.date}</Item.Meta>
