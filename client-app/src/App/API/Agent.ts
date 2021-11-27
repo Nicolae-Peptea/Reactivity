@@ -11,14 +11,14 @@ const sleep = (delay: number) => {
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
-axios.interceptors.response.use(response => {
-    return sleep(1000).then(( ) => {
+axios.interceptors.response.use(async response => {
+    try {
+        await sleep(1000);
         return response;
-    })
-    .catch((error) => {
+    } catch (error) {
         console.log(error);
-        return Promise.reject(error);
-    })
+        return await Promise.reject(error);
+    }
 })
 
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
