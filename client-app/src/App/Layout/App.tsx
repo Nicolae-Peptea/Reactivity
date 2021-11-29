@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import ActivityDashboard from '../../Features/Activities/Dashboard/ActivityDashboard';
 import {v4 as uuid} from "uuid"
 import agent from '../API/Agent';
-import LoadingComponent from './Components';
+import LoadingComponent from './LoadingComponents';
 
 
 function App() {
@@ -25,10 +25,10 @@ function App() {
       response.forEach(activity => {
         activity.date = activity.date.split("T")[0];
         activities.push(activity);
-        setLoading(false);
       })
       
       setActivities(activities);
+      setLoading(false);
     })
   }, [])
 
@@ -54,6 +54,7 @@ function App() {
 
   function handleCreateOrEditActivity(activity: Activity) {
     setSubmitting(true);
+    
     if (activity.id) {
       agent.Activities.update(activity).then(() => {
         setActivities([...activities.filter(x=> x.id !== activity.id), activity]);
@@ -66,12 +67,22 @@ function App() {
     }
 
     setSelectedActivity(activity);
-    setEditMode(false);
-    setSubmitting(false);
+    setTimeout(() => {
+      setEditMode(false);
+      setSubmitting(false);
+    }, 1000);
+
   }
 
   function handleDeleteActivity(id: string) {
-    setActivities([...activities.filter(x => x.id !== id)])
+    setSubmitting(true);
+    agent.Activities.delete(id).then(() =>{
+      setActivities([...activities.filter(x => x.id !== id)])
+      setTimeout(() => {
+        setSubmitting(false);
+      }, 1000);
+    }); 
+   
   }
 
   if (loading) return <LoadingComponent content="Loading App"/>
