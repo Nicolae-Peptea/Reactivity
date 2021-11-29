@@ -4,9 +4,13 @@ import 'semantic-ui-css/semantic.min.css';
 import './App/Layout/styles.css';
 import App from './App/Layout/App';
 import reportWebVitals from './reportWebVitals';
+import { store, StoreContext } from './App/Stores/store';
 
 ReactDOM.render(
-    <App />,
+  <StoreContext.Provider value={store}>
+      <App />
+  </StoreContext.Provider>,
+ 
   document.getElementById('root')
 );
 
