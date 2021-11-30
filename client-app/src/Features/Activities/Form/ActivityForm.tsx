@@ -11,8 +11,8 @@ export default observer (function ActivityForm() {
 
     const history = useHistory();
     const {activityStore} = useStore();
-    const{createActivity, updateActivity,
-            loading, loadActivity, loadingInitial} = activityStore;
+    const{createActivity, updateActivity, loading,
+            loadActivity, loadingInitial, setLoadingInitial} = activityStore;
     const {id} = useParams<{id: string}>();
     const [activity, setActivity] = useState({
         id: "",
@@ -28,8 +28,10 @@ export default observer (function ActivityForm() {
         if (id) {
             loadActivity(id)
             .then(activity => setActivity(activity!));
+        } else {
+            setLoadingInitial(false);
         }
-    }, [id, loadActivity])
+    }, [id, loadActivity, setLoadingInitial])
 
     function handleSubmit() {
         if (activity.id.length === 0) {
