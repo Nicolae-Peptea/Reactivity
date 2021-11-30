@@ -41,13 +41,16 @@ export default class ActivityStore{
         
         if (activity) {
             this.selectedActivity = activity;
+            return activity;
         } else {
             this.loadingInitial = true;
             try {
                 activity = await agent.Activities.details(id);
                 this.setActivity(activity);
+                
                 this.selectedActivity = activity;
                 this.setLoadingInitial(false);
+                return activity;
             } catch (error) {
                 console.log(error);
                 this.setLoadingInitial(false);
@@ -56,7 +59,6 @@ export default class ActivityStore{
     }
 
     private getActivity = (id: string) => {
-        console.log(this.activityRegistry.get(id)?.category)
         return this.activityRegistry.get(id);
        
     }

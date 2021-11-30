@@ -29,7 +29,12 @@ export default observer (function ActivityList() {
                                 <div>{activity.city}, {activity.venue}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button as={Link} to={`/activities/${activity.id}`} floated="right" content="View" color="blue" />
+                                <Button 
+                                    as={Link} to={`/activities/${activity.id}`}
+                                    floated="right"
+                                    content="View"
+                                    color="blue"
+                                />
                                 <Button
                                     name={activity.id}
                                     loading={loading && target === activity.id}

@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
 import LoadingComponent from "../../../App/Layout/LoadingComponents";
 import { useStore } from "../../../App/Stores/store";
@@ -34,8 +35,8 @@ export default observer (function ActivityDetails() {
             </Card.Content>
             <Card.Content extra>
                 <Button.Group widths="2">
-                    <Button basic color="blue" content="Edit"></Button>
-                    <Button basic color="grey" content="Cancel"></Button>
+                    <Button as={Link} to={`/manage/${activity.id}`} basic color="blue" content="Edit"></Button>
+                    <Button as={Link} to={"/activities"} basic color="grey" content="Cancel"></Button>
                 </Button.Group>
             </Card.Content>
         </Card>
