@@ -5,3 +5,9 @@ body{
 .ui.inverted.top.fixed.menu{
   background-image: linear-gradient(135deg, rgb(24,52,115) 5%, rgb(33,138,174) 69%, rgb(32,167, 172) 90%) !important;
 }
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+}
