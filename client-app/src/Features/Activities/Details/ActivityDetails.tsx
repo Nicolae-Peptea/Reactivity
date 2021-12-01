@@ -2,9 +2,13 @@ import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Button, Card, Image, Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../App/Layout/LoadingComponents";
 import { useStore } from "../../../App/Stores/store";
+import ActivityDetailedChat from "./ActivityDetailedChat";
+import ActivityDetailedHeader from "./ActivityDetailedHeader";
+import ActivityDetailedInfo from "./ActivityDetailedInfo";
+import ActivityDetailedSideBar from "./ActivityDetailedSIdeBar";
 
 
 export default observer (function ActivityDetails() {
@@ -22,23 +26,15 @@ export default observer (function ActivityDetails() {
     if (loadingInitial || !activity) return <LoadingComponent />;
 
     return (
-        <Card fluid>
-            <Image src={`/assets/categoryImages/${activity.category}.jpg`}/>
-            <Card.Content>
-            <Card.Header>{activity.title}</Card.Header>
-            <Card.Meta>
-                <span>{activity.date}</span>
-            </Card.Meta>
-            <Card.Description>
-                {activity.description}
-            </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Button.Group widths="2">
-                    <Button as={Link} to={`/manage/${activity.id}`} basic color="blue" content="Edit"></Button>
-                    <Button as={Link} to={"/activities"} basic color="grey" content="Cancel"></Button>
-                </Button.Group>
-            </Card.Content>
-        </Card>
+        <Grid>
+            <Grid.Column width={10}>
+                <ActivityDetailedHeader activity={activity}/>
+                <ActivityDetailedInfo />
+                <ActivityDetailedChat /> 
+            </Grid.Column>
+            <Grid.Column width={6}>
+                <ActivityDetailedSideBar/>
+            </Grid.Column>
+        </Grid>
     )
 })
