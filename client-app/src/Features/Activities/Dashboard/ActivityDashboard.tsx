@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import LoadingComponent from "../../../App/Layout/LoadingComponents";
 import { useStore } from "../../../App/Stores/store";
-
 import ActivityList from "./ActivityList";
 
 
