@@ -2,14 +2,9 @@
 using Application.Core;
 using Domain;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -31,14 +26,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateActivity (Activity activity)
+        public async Task<IActionResult> CreateActivity(Activity activity)
         {
             Result<Unit> result = await Mediator.Send(new Create.Command { Activity = activity });
             return HandleResult(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditActivity (Guid id, Activity activity)
+        public async Task<IActionResult> EditActivity(Guid id, Activity activity)
         {
             activity.Id = id;
             Result<Unit> result = await Mediator.Send(new Edit.Command { Activity = activity });
@@ -46,7 +41,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActivity (Guid id)
+        public async Task<IActionResult> DeleteActivity(Guid id)
         {
             Result<Unit> result = await Mediator.Send(new Delete.Command { Id = id });
             return HandleResult(result);
