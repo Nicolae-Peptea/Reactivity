@@ -10,6 +10,8 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import MyTextInput from "../../../App/Common/Form/MyTextInput";
 import MyTextArea from "../../../App/Common/Form/MyTextArea";
+import MySelectInput from "../../../App/Common/Form/MySelectInput";
+import { categoryOptions } from "../../../App/Common/Options/categoryOptions";
 
 export default observer (function ActivityForm() {
 
@@ -28,7 +30,7 @@ export default observer (function ActivityForm() {
         venue: "",
     });
 
-    const validationSchenma = Yup.object({
+    const validationSchema = Yup.object({
         title: Yup.string().required("The activity title is required"),
         description: Yup.string().required("The activity description is required"),
         category: Yup.string().required(),
@@ -71,7 +73,7 @@ export default observer (function ActivityForm() {
     return (
         <Segment clearing>
             <Formik
-            validationSchema={validationSchenma}
+            validationSchema={validationSchema}
                 enableReinitialize
                 initialValues={activity}
                 onSubmit={values => console.log(values)}>
@@ -80,7 +82,7 @@ export default observer (function ActivityForm() {
                      <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
                         <MyTextInput placeholder="Tile" name="title"></MyTextInput>
                         <MyTextArea rows={3} placeholder="Description" name='description'></MyTextArea>
-                        <MyTextInput placeholder="Category" name='category'></MyTextInput>
+                        <MySelectInput options={categoryOptions} placeholder="Category" name='category'></MySelectInput>
                         <MyTextInput placeholder="Date" name='date'></MyTextInput>
                         <MyTextInput placeholder="City" name='city'></MyTextInput>
                         <MyTextInput placeholder="Venue" name='venue'></MyTextInput>
