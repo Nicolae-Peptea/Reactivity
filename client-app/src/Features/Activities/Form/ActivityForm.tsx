@@ -13,6 +13,7 @@ import MyTextArea from "../../../App/Common/Form/MyTextArea";
 import MySelectInput from "../../../App/Common/Form/MySelectInput";
 import { categoryOptions } from "../../../App/Common/Options/categoryOptions";
 import MyDateInput from "../../../App/Common/Form/MyDateInput";
+import Activity from "../../../App/Models/activity";
 
 export default observer (function ActivityForm() {
 
@@ -21,12 +22,12 @@ export default observer (function ActivityForm() {
     const{createActivity, updateActivity, loading,
             loadActivity, loadingInitial, setLoadingInitial} = activityStore;
     const {id} = useParams<{id: string}>();
-    const [activity, setActivity] = useState({
+    const [activity, setActivity] = useState<Activity>({
         id: "",
         title: "",
         category: "",
         description: "",
-        date: "",
+        date: null,
         city: "",
         venue: "",
     });
