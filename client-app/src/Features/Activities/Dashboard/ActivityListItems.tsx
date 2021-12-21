@@ -19,7 +19,6 @@ export default function ActivityListItems({activity} : Props) {
                            <Item.Header as={Link} to={`/activities/${activity.id}`}>{activity.title}</Item.Header>
                            <Item.Description>Hosted by Bob</Item.Description>
                        </Item.Content>
-                      
                    </Item>
                </Item.Group>
            </Segment>

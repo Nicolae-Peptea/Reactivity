@@ -1,6 +1,6 @@
-import {makeAutoObservable, runInAction} from "mobx"
+import {makeAutoObservable, runInAction} from "mobx";
 import agent from "../API/Agent";
-import Activity from "../Models/activity"
+import Activity from "../Models/activity";
 
 
 export default class ActivityStore {
@@ -8,7 +8,7 @@ export default class ActivityStore {
     selectedActivity: Activity | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor() {
         makeAutoObservable(this)
@@ -21,7 +21,7 @@ export default class ActivityStore {
                     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
     }
 
-    get groupedActivities(){
+    get groupedActivities() {
         return Object.entries(
             this.activityByDate.reduce((activities, activity) => {
                 const date = activity.date;
@@ -50,7 +50,6 @@ export default class ActivityStore {
         
         if (activity) {
             this.selectedActivity = activity;
-            
             return activity;
         } else {
             this.loadingInitial = true;

@@ -9,7 +9,7 @@ import ActivityList from "./ActivityList";
 
 export default observer (function ActivityDashboard() {
     const {activityStore} = useStore();
-    const {loadActivities, activityRegistry} = activityStore
+    const {loadActivities, activityRegistry, loadingInitial} = activityStore
 
     useEffect(() => {
         if (activityRegistry.size <= 1) {
@@ -17,7 +17,7 @@ export default observer (function ActivityDashboard() {
         }
     }, [activityRegistry.size, loadActivities])
   
-    if (activityStore.loadingInitial) return <LoadingComponent content="Loading App"/>
+    if (loadingInitial) return <LoadingComponent content="Loading App"/>
 
     return(
         <Grid>

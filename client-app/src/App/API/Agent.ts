@@ -7,7 +7,7 @@ import { store } from "../Stores/store";
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
-        setTimeout(resolve, delay)
+        setTimeout(resolve, delay);
     })
 }
 
@@ -18,14 +18,14 @@ axios.interceptors.response.use(async response => {
     return response;
 }, (error: AxiosError) => {
     const{data, status, config} = error.response!;
-    console.log(data);
+    
     switch (status) {
         case 400:
             if (typeof data === 'string') {
                 toast.error(data);
             }
             if (config.method === 'get' && 'id' in data.errors) {
-                history.push('/not-found')
+                history.push('/not-found');
             }
             if (data.errors) {
                 const modalStateErrors = [];
