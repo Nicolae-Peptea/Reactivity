@@ -4,6 +4,7 @@ using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -28,7 +29,7 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = _userManager.FindByEmailAsync(loginDto.Email).Result;
+            AppUser user = _userManager.FindByEmailAsync(loginDto.Email).Result;
 
             if (user == null)
             {
@@ -39,16 +40,51 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return new UserDto
-                {
-                    DisplayName = user.DisplayName,
-                    Image = null,
-                    Token = _tokenService.CreateToken(user),
-                    Username = user.UserName,
-                };
+                return CreateUserDto(user);
             }
 
             return Unauthorized();
+        }
+
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register (RegisterDto registerDto)
+        {
+            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
+            {
+                return BadRequest("Email Taken");
+            }
+
+            if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.Username))
+            {
+                return BadRequest("Username Taken");
+            }
+
+            AppUser user = new AppUser
+            {
+                DisplayName = registerDto.DisplayName,
+                Email = registerDto.Email,
+                UserName = registerDto.Username,
+            };
+
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+            if (result.Succeeded)
+            {
+                return CreateUserDto(user);
+            }
+
+            return BadRequest("Prolbem registering the user");
+        }
+
+        private UserDto CreateUserDto(AppUser user)
+        {
+            return new UserDto
+            {
+                DisplayName = user.DisplayName,
+                Image = null,
+                Token = _tokenService.CreateToken(user),
+                Username = user.UserName,
+            };
         }
     }
 }
