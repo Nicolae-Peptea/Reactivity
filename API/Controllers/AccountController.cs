@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -74,6 +75,16 @@ namespace API.Controllers
             }
 
             return BadRequest("Prolbem registering the user");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            AppUser user = await _userManager
+                .FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+
+            return CreateUserDto(user);
         }
 
         private UserDto CreateUserDto(AppUser user)
