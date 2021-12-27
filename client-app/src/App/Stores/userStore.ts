@@ -17,21 +17,24 @@ export default class UserStore {
     }
 
     login = async (creds: UserFormValues) => {
+        console.log("Intru in login")
         try {
+            console.log("User creds ", creds)
             const user = await agent.Account.login(creds);
             store.commonStore.setToken(user.token);
             runInAction(() => {
                 this.user = user;
             })
            history.push("/activities");
+           store.modalStore.closeModal();
         } catch (error) {
+            console.log(error);
             throw error;
         }
     }
 
     logout = () => {
         store.commonStore.setToken(null);
-        // window.localStorage.removeItem("jwt");
         this.user = null;
         history.push("/");
     }

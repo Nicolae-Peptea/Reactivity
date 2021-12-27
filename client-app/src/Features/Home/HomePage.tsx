@@ -3,9 +3,10 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Header, Image, Segment } from "semantic-ui-react";
 import { useStore } from "../../App/Stores/store";
+import LoginForm from "../Users/LoginForm";
 
 export default observer (function HomePage(){
-    const {userStore} = useStore();
+    const {userStore, modalStore} = useStore();
     return (
         <Fragment>
             <Segment inverted textAlign='center' vertical className='masthead'>
@@ -20,7 +21,10 @@ export default observer (function HomePage(){
                             <Button as={Link} to='/activities' size='huge' inverted content='Go to activites'/>
                         </>
                     ): (
-                        <Button as={Link} to='/login' size='huge' inverted content='Login'/>
+                        <>
+                            <Button onClick={() => modalStore.openModal(<LoginForm />)} size='huge' inverted content='Login'/>
+                            <Button onClick={() => modalStore.openModal(<h1>Register</h1>)} size='huge' inverted content='Register'/>
+                        </>
                     )}
                     
                   
