@@ -38,7 +38,7 @@ namespace API.Services
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = credentials,
-            };
+            }; 
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
