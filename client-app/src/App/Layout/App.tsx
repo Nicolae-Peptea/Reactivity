@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import {Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../Features/Activities/Dashboard/ActivityDashboard';
@@ -12,10 +12,25 @@ import { ToastContainer } from 'react-toastify';
 import NotFound from '../../Features/Errors/NotFound';
 import ServerError from '../../Features/Errors/ServerError';
 import LoginForm from '../../Features/Users/LoginForm';
+import { useStore } from '../Stores/store';
+import LoadingComponent from './LoadingComponents';
 
 function App() {
 
   const location = useLocation();
+  const {commonStore, userStore} = useStore();
+
+  useEffect(() => {
+    if (commonStore.token) {
+      userStore.getUser().finally(() => commonStore.setAppLoaded());
+    } else {
+      commonStore.setAppLoaded();
+    }
+  }, [commonStore, userStore])
+
+  if (!commonStore.appLoaded) {
+    return <LoadingComponent content='Loading App...'></LoadingComponent>
+  }
 
   return (
     <Fragment>

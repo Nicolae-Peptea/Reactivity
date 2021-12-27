@@ -6,6 +6,8 @@ import { store } from "./store";
 
 export default class UserStore {
     user: User | null = null;
+
+
     constructor() {
         makeAutoObservable(this);
     }
@@ -29,8 +31,17 @@ export default class UserStore {
 
     logout = () => {
         store.commonStore.setToken(null);
-        window.localStorage.removeItem("jwt");
+        // window.localStorage.removeItem("jwt");
         this.user = null;
         history.push("/");
+    }
+
+    getUser = async () => {
+        try {
+            const user = await agent.Account.current();
+            runInAction (() => this.user = user);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
