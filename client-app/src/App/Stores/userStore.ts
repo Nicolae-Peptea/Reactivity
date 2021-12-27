@@ -16,10 +16,23 @@ export default class UserStore {
         return !!this.user;
     }
 
-    login = async (creds: UserFormValues) => {
-        console.log("Intru in login")
+    register = async (creds: UserFormValues) => {
         try {
-            console.log("User creds ", creds)
+            const user = await agent.Account.register(creds);
+            store.commonStore.setToken(user.token);
+            runInAction(() => {
+                this.user = user;
+            })
+           history.push("/activities");
+           store.modalStore.closeModal();
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
+    login = async (creds: UserFormValues) => {
+        try {
             const user = await agent.Account.login(creds);
             store.commonStore.setToken(user.token);
             runInAction(() => {
