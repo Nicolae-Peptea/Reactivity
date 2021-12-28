@@ -19,7 +19,6 @@ namespace Application.Core
                 .ForMember(d => d.DisplayName, opt => opt.MapFrom(s => s.AppUser.DisplayName))
                 .ForMember(d => d.Username, opt => opt.MapFrom(s => s.AppUser.UserName))
                 .ForMember(d => d.Bio, opt => opt.MapFrom(s => s.AppUser.Bio));
-
         }
     }
 }
