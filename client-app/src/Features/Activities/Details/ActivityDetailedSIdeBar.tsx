@@ -2,14 +2,18 @@ import React from 'react'
 import { Segment, List, Label, Item, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import { Profile } from '../../../App/Models/profile'
+import Activity from '../../../App/Models/activity'
 
 
 interface Props {
-    attendees: Profile[];
+    activty: Activity;
 }
 
-export default observer(function ActivityDetailedSidebar ({attendees}: Props) {
+export default observer(function ActivityDetailedSidebar ({activty: {attendees, host}}: Props) {
+    if (!attendees) {
+        return null;
+    }
+
     return (
         <>
             <Segment
@@ -27,13 +31,14 @@ export default observer(function ActivityDetailedSidebar ({attendees}: Props) {
                     {attendees.map(attendee => {
                         return (
                         <Item style={{ position: 'relative' }} key={attendee.username}>
-                        <Label
-                            style={{ position: 'absolute' }}
-                            color='orange'
-                            ribbon='right'
-                        >
-                            Host
-                        </Label>
+                            {attendee.username === host?.username &&
+                                <Label
+                                style={{ position: 'absolute' }}
+                                color='orange'
+                                ribbon='right'
+                                >
+                                    Host
+                                </Label>}
                         <Image size='tiny' src={attendee.image ||'/assets/user.png'} />
                         <Item.Content verticalAlign='middle'>
                             <Item.Header as='h3'>
