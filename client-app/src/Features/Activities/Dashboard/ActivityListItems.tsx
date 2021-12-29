@@ -31,7 +31,7 @@ export default function ActivityListItems({activity} : Props) {
                </span>
            </Segment>
            <Segment secondary>
-                <ActivityListItemAttendee />
+                <ActivityListItemAttendee attendees={activity.attendees!}/>
            </Segment>
            <Segment clearing>
                <span>{activity.description}</span>
