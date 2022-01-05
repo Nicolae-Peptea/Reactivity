@@ -1,5 +1,4 @@
-﻿using Application.Profiles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Application.Activities

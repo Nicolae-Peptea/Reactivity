@@ -5,10 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,8 +32,8 @@ namespace Application.Photos
             }
             public async Task<Result<Photo>> Handle(Command request, CancellationToken cancellationToken)
             {
-               var user = await _context.Users.Include(p => p.Photos)
-                    .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
+                var user = await _context.Users.Include(p => p.Photos)
+                     .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
 
                 if (user == null)
                 {
