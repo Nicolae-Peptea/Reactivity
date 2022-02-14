@@ -24,7 +24,7 @@ namespace Application.Core
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));
 
-            CreateMap<Profiles.PartialProfileDto, Profiles.Profile>();
+            CreateMap<Profiles.PartialProfileDto, AppUser>();
         }
     }
 }

@@ -12,10 +12,10 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Details.Query { Username = username }));
         }
 
-        [HttpPut("{username}")]
+        [HttpPut]
         public async Task<IActionResult> UpdateProfileDescriptions(PartialProfileDto profile)
         {
-
+            var res = HandleResult(await Mediator.Send(new Edit.Command { Profile = profile }));
             return Ok();
         }
     }
