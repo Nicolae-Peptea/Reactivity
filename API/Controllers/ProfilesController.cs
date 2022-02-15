@@ -15,8 +15,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateProfileDescriptions(PartialProfileDto profile)
         {
-            var res = HandleResult(await Mediator.Send(new Edit.Command { Profile = profile }));
-            return Ok();
+            return HandleResult(await Mediator.Send(new Edit.Command { Profile = profile }));
         }
     }
 }
