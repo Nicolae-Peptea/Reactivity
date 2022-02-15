@@ -51,7 +51,7 @@ export default class ProfileStore {
         } catch (error) {
             console.log(error);
         }
-        finally{
+        finally {
             this.loading = false;
         }
     }
