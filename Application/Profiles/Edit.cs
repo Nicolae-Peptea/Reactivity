@@ -1,6 +1,7 @@
 ﻿using Application.Core;
 using Application.Interfaces;
 using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -19,30 +20,33 @@ namespace Application.Profiles
         {
             public PartialProfileDto Profile { get; set; }
         }
+
+        public class CommandValdiator : AbstractValidator<Command>
+        {
+            public CommandValdiator()
+            {
+                RuleFor(x => x.Profile).SetValidator(new PartialProfileValidator());
+            }
+        }
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
-            private readonly IMapper _mapper;
 
-            public Handler(DataContext context, IUserAccessor userAccessor, IMapper mapper)
+            public Handler(DataContext context, IUserAccessor userAccessor)
             {
                 _context = context;
                 _userAccessor = userAccessor;
-                _mapper = mapper;
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var profile =  await _context.Users
                     .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
-                
-                _mapper.Map(request.Profile, profile);
 
                 return Result<Unit>.Success(Unit.Value);
                 
             }
-
         }
     }
 }
