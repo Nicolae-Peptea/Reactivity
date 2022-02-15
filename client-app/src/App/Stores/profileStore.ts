@@ -1,3 +1,4 @@
+import { th } from "date-fns/locale";
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../API/Agent";
 import { Photo, Profile } from "../Models/profile";
@@ -31,6 +32,27 @@ export default class ProfileStore {
             console.log(error) 
         } finally {
             runInAction(() => this.loadingProfile = false)
+        }
+    }
+
+    updateProfile = async (profile: Partial<Profile>) => {
+        this.loading = true;
+        try {
+            await agent.Profiles.updateProfile(profile);
+            runInAction(() => {
+                if (profile.displayName && profile.displayName !== store.userStore.user?.displayName) {
+                    store.userStore.setDisplayName(profile.displayName);
+                }
+                console.log("profile de se schimbna", profile);
+                console.log("profile de e in clasa", this.profile);
+                this.profile ={...this.profile, ...profile as Profile};
+             
+            })
+        } catch (error) {
+            console.log(error);
+        }
+        finally{
+            this.loading = false;
         }
     }
 
