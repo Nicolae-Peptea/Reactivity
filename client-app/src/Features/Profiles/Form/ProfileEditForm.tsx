@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { Button, Form } from "semantic-ui-react";
 import MyTextInput from "../../../App/Common/Form/MyTextInput";
 import MyTextArea from "../../../App/Common/Form/MyTextArea";
-import { Profile } from "../../../App/Models/profile";
 
 interface Props {
     setEditMode: (editMode: boolean) => void
@@ -15,17 +14,15 @@ interface Props {
 export default observer (function ProfileEditForm ({setEditMode}: Props) {
     const {profileStore: {profile, updateProfile}} = useStore();
 
-    function handleFormSubmit(values: Partial<Profile>) {
-        updateProfile(values).then(() => setEditMode(false));
-    }
-
     return(
         <Formik
             initialValues={{displayName: profile?.displayName, bio: profile?.bio}}
             validationSchema={Yup.object({
                 displayName: Yup.string().required("Display name is required")
             })}
-            onSubmit={values => handleFormSubmit(values)}
+            onSubmit={values => {
+                updateProfile(values).then(() => setEditMode(false));
+            }}
         >
             {({handleSubmit, isSubmitting, isValid, dirty}) => (
                 <Form className="ui form" onSubmit={handleSubmit}>
