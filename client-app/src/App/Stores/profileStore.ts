@@ -1,4 +1,3 @@
-import { th } from "date-fns/locale";
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../API/Agent";
 import { Photo, Profile } from "../Models/profile";
@@ -43,15 +42,13 @@ export default class ProfileStore {
                 if (profile.displayName && profile.displayName !== store.userStore.user?.displayName) {
                     store.userStore.setDisplayName(profile.displayName);
                 }
-                console.log("profile de se schimbna", profile);
-                console.log("profile de e in clasa", this.profile);
                 this.profile = {...this.profile, ...profile as Profile};
             })
         } catch (error) {
             console.log(error);
         }
         finally {
-            this.loading = false;
+            runInAction(() => this.loading = false);
         }
     }
 

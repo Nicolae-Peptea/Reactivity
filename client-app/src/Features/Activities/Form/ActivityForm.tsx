@@ -88,7 +88,8 @@ export default observer (function ActivityForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={isSubmitting}
                             floated="right"
-                            positive type="submit"
+                            positive
+                            type="submit"
                             content="Submit" 
                         />
                         <Button as={Link} to={"/activities"} floated="right" type="submit" content="Cancel" />

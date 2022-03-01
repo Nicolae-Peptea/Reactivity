@@ -36,5 +36,4 @@ export default observer(function ProfileAbout(){
             </Grid>
         </Tab.Pane>
     )
-}
-)
+})
