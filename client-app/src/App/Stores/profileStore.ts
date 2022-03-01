@@ -45,8 +45,7 @@ export default class ProfileStore {
                 }
                 console.log("profile de se schimbna", profile);
                 console.log("profile de e in clasa", this.profile);
-                this.profile ={...this.profile, ...profile as Profile};
-             
+                this.profile = {...this.profile, ...profile as Profile};
             })
         } catch (error) {
             console.log(error);
