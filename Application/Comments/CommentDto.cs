@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Comments
 {
-    public class CommentsDto
+    public class CommentDto
     {
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
