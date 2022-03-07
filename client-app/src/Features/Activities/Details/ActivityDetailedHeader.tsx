@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {Button, Header, Item, Segment, Image, Label} from 'semantic-ui-react'
+import {Button, Header, Item, Segment, Image, Label} from 'semantic-ui-react';
 import Activity from '../../../App/Models/activity';
 import { useStore } from '../../../App/Stores/store';
 
