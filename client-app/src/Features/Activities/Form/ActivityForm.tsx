@@ -31,7 +31,6 @@ export default observer (function ActivityForm() {
         date: Yup.string().required("Date is required").nullable(),
         venue: Yup.string().required(),
         city: Yup.string().required(),
-
     })
     
     useEffect(() => {

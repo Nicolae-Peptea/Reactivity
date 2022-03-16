@@ -21,6 +21,7 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
         }
 
         return () => {
+            console.log("dau unounft la chat");
             commentStore.clearComments();
         }
     }, [commentStore, activityId])
@@ -38,8 +39,9 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
             </Segment>
             <Segment attached clearing>
                 <Formik
-                    onSubmit={(values, {resetForm}) =>
-                        commentStore.addComment(values).then(() => resetForm())}
+                    onSubmit={(values, {resetForm}) =>{
+                        commentStore.addComment(values).then(() => resetForm());
+                    }}
                     initialValues={{body: ""}}
                     validationSchema={Yup.object({
                         body: Yup.string().required()
@@ -62,14 +64,14 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
 
                                             if (e.key === 'Enter' && !e.shiftKey) {
                                                 e.preventDefault();
-                                                isValid && handleSubmit()     
+                                                isValid && handleSubmit();
                                             }
                                         }}
                                     />
                                 </div>
                             )}
                         </Field>
-                </Form>
+                    </Form>
                 )}
                 </Formik>
                 <Comment.Group>
@@ -87,11 +89,8 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
                             </Comment>
                         )
                     })}
-                   
-            
                 </Comment.Group>
             </Segment>
         </>
-
     )
 })
