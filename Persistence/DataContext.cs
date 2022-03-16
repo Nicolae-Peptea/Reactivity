@@ -44,7 +44,7 @@ namespace Persistence
                 b.HasKey(k => new { k.ObserverId, k.TargetId });
 
                 b.HasOne(o => o.Observer)
-                .WithMany(f => f.Follwings)
+                .WithMany(f => f.Followings)
                 .HasForeignKey(o => o.ObserverId)
                 .OnDelete(DeleteBehavior.Cascade);
 
