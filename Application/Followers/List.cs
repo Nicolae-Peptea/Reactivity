@@ -10,6 +10,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Application.Core;
+using Application.Interfaces;
 
 namespace Application.Followers
 {
@@ -25,11 +26,13 @@ namespace Application.Followers
         {
             private readonly DataContext _dataContext;
             private readonly IMapper _mapper;
+            private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext dataContext, IMapper mapper)
+            public Handler(DataContext dataContext, IMapper mapper, IUserAccessor userAccessor)
             {
                 _dataContext = dataContext;
                 _mapper = mapper;
+                _userAccessor = userAccessor;
             }
 
             public async Task<Result<List<Profiles.Profile>>> Handle(Query request, CancellationToken cancellationToken)
@@ -42,8 +45,10 @@ namespace Application.Followers
                         profiles = await _dataContext.UserFollowings
                             .Where(x => x.Target.UserName == request.Username)
                             .Select(u => u.Observer)
-                            .ProjectTo<Profiles.Profile>(_mapper.ConfigurationProvider)
+                            .ProjectTo<Profiles.Profile>(_mapper.ConfigurationProvider,
+                                new { currentUsername = _userAccessor.GetUserName() })
                             .ToListAsync();
+
                         break;
 
                     case "following":
