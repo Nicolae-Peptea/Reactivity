@@ -21,7 +21,6 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
         }
 
         return () => {
-            console.log("dau unounft la chat");
             commentStore.clearComments();
         }
     }, [commentStore, activityId])

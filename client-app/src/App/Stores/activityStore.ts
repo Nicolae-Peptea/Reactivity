@@ -50,6 +50,7 @@ export default class ActivityStore {
 
     loadActivity = async (id: string) => {
         let activity = this.getActivity(id);
+
         
         if (activity) {
             this.selectedActivity = activity;
