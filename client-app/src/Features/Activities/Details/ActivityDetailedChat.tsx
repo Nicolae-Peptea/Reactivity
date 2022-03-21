@@ -73,7 +73,7 @@ export default observer(function ActivityDetailedChat({activityId}: Props) {
                     </Form>
                 )}
                 </Formik>
-                <Comment.Group>
+                <Comment.Group className='reverse'>
                     {commentStore.comments.map(comment => {
                          return (
                             <Comment key={comment.id}>
