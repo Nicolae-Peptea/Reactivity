@@ -18,7 +18,7 @@ namespace API.Controllers
             Result<PagedList<ActivityDto>> result = await Mediator.Send(new List.Query
                 { Params = parameters });
 
-            return HandleResult(result);
+            return HandlePagedResult(result);
         }
 
         [HttpGet("{id}")]
