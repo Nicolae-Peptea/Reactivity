@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import {makeAutoObservable, runInAction} from "mobx";
 import agent from "../API/Agent";
 import Activity, { ActivityFormValues } from "../Models/activity";
+import { Pagination } from "../Models/pagination";
 import { Profile } from "../Models/profile";
 import { store } from "./store";
 
@@ -12,6 +13,7 @@ export default class ActivityStore {
     editMode = false;
     loading = false;
     loadingInitial = false;
+    pagination: Pagination | null = null;
 
     constructor() {
         makeAutoObservable(this)
@@ -38,14 +40,19 @@ export default class ActivityStore {
         this.loadingInitial = true;
         try {
             const activities = await agent.Activities.list();
-            activities.forEach(activity => {
+            activities.data.forEach(activity => {
                 this.setActivity(activity);
             })
+            this.setPagination(activities.pagination)
             this.setLoadingInitial(false);
         } catch (error) {
             console.log(error);
             this.setLoadingInitial(false);
         }
+    }
+
+    setPagination = (pagination: Pagination) => {
+        this.pagination = pagination;
     }
 
     loadActivity = async (id: string) => {
