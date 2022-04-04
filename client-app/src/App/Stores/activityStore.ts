@@ -64,12 +64,10 @@ export default class ActivityStore {
 
     setPredicate = (predicate: string, value: string | Date) => {
         const resetPredicate = () => {
-            this.predicate.forEach((key, value) => {
+            this.predicate.forEach((value, key) => {
                 if (key !== 'startDate') {
-                    this.predicate.delete(value);
+                    this.predicate.delete(key);
                 }
-
-                console.log(this.predicate);
             });
         }
         
@@ -86,7 +84,7 @@ export default class ActivityStore {
                 resetPredicate();
                 this.predicate.set('isHost', true);
                 break;
-            case 'stratDate':
+            case 'startDate':
                 this.predicate.delete('startDate');
                 this.predicate.set('startDate', value);
                 break;
