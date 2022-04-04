@@ -32,14 +32,12 @@ export default observer (function ActivityDashboard() {
 
     return(
         <Grid>
-            {console.log("loading next ", !loadingNext, " ", "pagination ", !!pagination, " ", "pagination current page", pagination?.currentPage, " ", "paginatipn total pages", pagination?.totalPages)}
             <Grid.Column width='10'>
             <InfiniteScroll
                 pageStart={0}
                 loadMore={handleGetNext}
                 hasMore={!loadingNext && !!pagination && pagination.currentPage < pagination.totalPages}
-                initialLoad={false}
-            >
+                initialLoad={false}>
                 <ActivityList />
             </InfiniteScroll>
             </Grid.Column>
