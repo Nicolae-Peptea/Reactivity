@@ -146,6 +146,7 @@ export default class ProfileStore {
 
                     if (photo.isMain && store.userStore.user) {
                         store.userStore.setImage(photo.url);
+                        this.profile.image = photo.url;
                     }
                 }
             })
