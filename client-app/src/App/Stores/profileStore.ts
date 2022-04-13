@@ -184,7 +184,7 @@ export default class ProfileStore {
             await agent.Profiles.deletePhoto(photo.id);
             runInAction(() => {
                 if (this.profile) {
-                    this.profile.photos = this.profile.photos?.filter(p => p.id);
+                    this.profile.photos = this.profile.photos?.filter(p => p.id !== photo.id);
                 }
             })
         } catch (error) {
