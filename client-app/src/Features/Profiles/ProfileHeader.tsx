@@ -9,13 +9,14 @@ interface Props {
 }
 
 export default observer (function ProfileHeader({profile}: Props) {
+
     return (
         <Segment>
             <Grid>
                 <Grid.Column width={12}>
                     <Item.Group>
                         <Item>
-                            <Item.Image avatar size="small" src={profile.image ||'/assets/user.png'} />
+                            <Item.Image avatar size="small" src={profile?.image ||'/assets/user.png'} />
                             <Item.Content verticalAlign="middle">
                                 <Header as='h1' content={profile.displayName}/>
                             </Item.Content>
