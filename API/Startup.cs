@@ -52,11 +52,12 @@ namespace API
                 .BlockAllMixedContent()
                 .StyleSources(s => s.Self().CustomSources(
                     "https://fonts.googleapis.com",
-                    "https://cdnjs.cloudflare.com"
+                    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
                     )
                 )
-                .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com",
-                    "https://cdnjs.cloudflare.com",
+                .FontSources(s => s.Self().CustomSources(
+                    "https://fonts.gstatic.com",
+                    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/",
                     "data:"
                     )
                 )
