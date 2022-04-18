@@ -63,7 +63,6 @@ namespace API
                 .FormActions(s => s.Self())
                 .FrameAncestors(s => s.Self())
                 .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
-                .ScriptSources(s => s.Self())
                 .ScriptSources(s => s.Self().CustomSources("sha256-nL1M5C65PrV+/MOIzjYehMVkddQ/mbwh5FYmidhF0UE="))
                 );
 
@@ -72,6 +71,14 @@ namespace API
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
+            }
+            else
+            {
+                app.Use(async (context, next) =>
+                {
+                    context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+                    await next.Invoke();
+                });
             }
 
             //app.UseHttpsRedirection();
