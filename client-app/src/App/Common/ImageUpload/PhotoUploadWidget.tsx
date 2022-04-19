@@ -3,6 +3,7 @@ import { Button, Grid, Header } from "semantic-ui-react";
 import PhotoWidgetCropper from "./PhotoWidgetCropper";
 import PhotoWidgetDropzone from "./PhotoWidgetDropzone";
 import { Cropper } from 'react-cropper';
+import { toast } from "react-toastify";
 
 interface Props {
     loading: boolean;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export default function PhotoUploadWidget({loading, uploadPhoto}: Props) {
+    const maxImageSize = 15438731;
+
     const [files, setFiles] = useState<any>([]);
     const [cropper, setCropper] = useState<Cropper>()
 
@@ -35,14 +38,25 @@ export default function PhotoUploadWidget({loading, uploadPhoto}: Props) {
             <Grid.Column width={1}/>
             <Grid.Column width={4}>
                 <Header color="teal" content='Step 2 - Resize' />
-                {files && files.length > 0 && (
-                    <PhotoWidgetCropper setCropper={setCropper} imagePreview={files[0].preview} />
-                )}
+                {   
+                    files && 
+                    files.length > 0 && 
+                    files[0].size > maxImageSize && 
+                    (toast.error("File is too large")) && 
+                    <span></span>    
+                }
+
+                {
+                    files &&
+                    files.length > 0 &&
+                    files[0].size < maxImageSize && 
+                    (<PhotoWidgetCropper setCropper={setCropper} imagePreview={files[0].preview} />)
+                }
             </Grid.Column>
             <Grid.Column width={1}/>
             <Grid.Column width={4}>
                 <Header color="teal" content='Step 3 - Upload' />
-                {files && files.length > 0 &&
+                {files && files.length > 0 && files[0].size < maxImageSize &&
                     <>
                     <div className="img-preview" style={{minHeight: 200, overflow: "hidden", marginBottom: "10px"}}/>
                     <Button.Group widths={2}>
