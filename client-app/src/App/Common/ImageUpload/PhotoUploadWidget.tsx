@@ -27,6 +27,7 @@ export default function PhotoUploadWidget({loading, uploadPhoto}: Props) {
 
     return(
         <Grid>
+            <Grid.Column width={1}/>
             <Grid.Column width={4}>
                 <Header color="teal" content='Step 1 - Add Photo' />
                 <PhotoWidgetDropzone setFiles={setFiles} />
