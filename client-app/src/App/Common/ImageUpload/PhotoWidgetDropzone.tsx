@@ -33,6 +33,7 @@ export default function PhotoWidgetDropzone({setFiles}: Props) {
             <input {...getInputProps()} />
             <Icon name="upload" size='huge'/>
             <Header content="Drop image here" />
+            <Header size='tiny' color='red' content='*Max 10 mb'/>
         </div>
     )
 }
