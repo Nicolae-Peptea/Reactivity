@@ -42,6 +42,11 @@ namespace Application.Photos
 
                 var photoUploadResult = await _photoAccessor.AddPhoto(request.File);
 
+                if (photoUploadResult == null)
+                {
+                    return Result<Photo>.Failure("File is too large");
+                }
+
                 var photo = new Photo
                 {
                     Url = photoUploadResult.Url,

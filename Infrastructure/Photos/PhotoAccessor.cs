@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Core;
+using Application.Interfaces;
 using Application.Photos;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
@@ -11,6 +12,8 @@ namespace Infrastructure.Photos
 {
     public class PhotoAccessor : IPhotoAccessor
     {
+        private const int MAXIMUM_LENGTH_OF_A_FILE = 10485760;
+
         private readonly Cloudinary _cloudinary;
         public PhotoAccessor(IOptions<CloudinarySettings> config)
         {
@@ -25,8 +28,18 @@ namespace Infrastructure.Photos
         }
         public async Task<PhotoUploadResult> AddPhoto(IFormFile file)
         {
-            if (file.Length > 0)
+            if (file.Length <= 0)
             {
+                return null;
+            }
+
+            if (file.Length >= MAXIMUM_LENGTH_OF_A_FILE)
+            {
+                return null;
+            }
+
+            //if (file.Length > 0 && file.Length <= MAXIMUM_LENGTH_OF_A_FILE)
+            //{
                 await using var stream = file.OpenReadStream();
                 var uploadParams = new ImageUploadParams
                 {
@@ -46,9 +59,9 @@ namespace Infrastructure.Photos
                     PublicId = uploadResult.PublicId,
                     Url = uploadResult.SecureUrl.ToString(),
                 };
-            }
+            //}
 
-            return null;
+            //return null;
         }
 
         public async Task<string> DeletePhoto(string publicId)
