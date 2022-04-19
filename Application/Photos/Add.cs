@@ -44,7 +44,7 @@ namespace Application.Photos
 
                 if (photoUploadResult == null)
                 {
-                    return Result<Photo>.Failure("File is too large");
+                    return Result<Photo>.Failure("File is too large, max is 10 MB");
                 }
 
                 var photo = new Photo
