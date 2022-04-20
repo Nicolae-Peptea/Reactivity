@@ -54,12 +54,22 @@ export default observer (function ActivityForm() {
         }
     }
 
+    function handleCancelForm() {
+        if (history.location.pathname.includes("manage")) {
+            return `/activities/${id}`
+        } else {
+            return "/activities"
+        }
+    }
+
     if (loadingInitial) {
         return <LoadingComponent content={"Loading activity...."} />
     }
 
     return (
         <Segment clearing>
+            {console.log(id)}
+            {console.log(handleCancelForm())}
             <Header content='Activity Details ' sub color="teal" />
             <Formik
                 validationSchema={validationSchema}
@@ -91,7 +101,13 @@ export default observer (function ActivityForm() {
                             type="submit"
                             content="Submit" 
                         />
-                        <Button as={Link} to={"/activities"} floated="right" type="submit" content="Cancel" />
+                        <Button
+                            as={Link}
+                            to={handleCancelForm()}
+                            floated="right"
+                            type="submit"
+                            content="Cancel"
+                        />
                     </Form>
                     )
                 }}
