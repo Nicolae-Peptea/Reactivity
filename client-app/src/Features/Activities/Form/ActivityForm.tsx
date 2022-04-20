@@ -55,11 +55,9 @@ export default observer (function ActivityForm() {
     }
 
     function handleCancelForm() {
-        if (history.location.pathname.includes("manage")) {
-            return `/activities/${id}`
-        } else {
-            return "/activities"
-        }
+        return history.location.pathname.includes("manage") ?
+            `/activities/${id}` :
+            '/activities';
     }
 
     if (loadingInitial) {
