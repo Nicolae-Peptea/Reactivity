@@ -46,6 +46,12 @@ export default class UserStore {
         }
     }
 
+    facebookLogin = () => {
+        window.FB.login(response => {
+            console.log(response);
+        }, {scope: 'public_profile,email'})
+    }
+
     logout = () => {
         store.commonStore.setToken(null);
         this.user = null;
