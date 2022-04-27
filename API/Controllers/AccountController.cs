@@ -106,7 +106,6 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> FacebookLogin(string accessToken)
         {
             string fbVerifyKey = _config["Facebook:AppId"] + "|" + _config["Facebook:AppSecret"];
-            
             HttpResponseMessage verifyToken = await _httpClient
                 .GetAsync($"debug_token?input_token={accessToken}&access_token={fbVerifyKey}");
 
@@ -116,7 +115,6 @@ namespace API.Controllers
             }
 
             string fbUrl = $"me?access_token={accessToken}&fields=name,email,picture.width(100).height(100)";
-
             HttpResponseMessage response = await _httpClient.GetAsync(fbUrl);
 
             if (!response.IsSuccessStatusCode)
@@ -125,11 +123,9 @@ namespace API.Controllers
             }
 
             string content = await response.Content.ReadAsStringAsync();
-
             dynamic fbInfo = JsonConvert.DeserializeObject<dynamic>(content);
 
             string username = (string)fbInfo.id;
-
             AppUser user = await _userManager.Users.Include(p => p.Photos)
                 .FirstOrDefaultAsync(x => x.UserName == username);
 
