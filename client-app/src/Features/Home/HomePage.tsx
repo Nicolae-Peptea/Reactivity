@@ -27,6 +27,7 @@ export default observer (function HomePage(){
                             <Button onClick={() => modalStore.openModal(<RegisterForm />)} size='huge' inverted content='Register'/>
                             <Divider horizontal inverted>Or</Divider>
                             <Button
+                                loading={userStore.fbLoading}
                                 size="huge"
                                 inverted
                                 color="facebook"
