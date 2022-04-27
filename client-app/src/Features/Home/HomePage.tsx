@@ -36,8 +36,6 @@ export default observer (function HomePage(){
                             />
                         </>
                     )}
-                    
-                  
                 </Container>
             </Segment>
         </Fragment>
