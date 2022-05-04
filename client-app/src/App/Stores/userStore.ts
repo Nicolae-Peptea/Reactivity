@@ -6,7 +6,7 @@ import { store } from "./store";
 
 export default class UserStore {
     user: User | null = null;
-    fbAccessToken: string | null = null;
+    fbAccessToken: fb.AuthResponse | null = null;
     fbLoading = false;
 
     constructor() {
@@ -50,16 +50,21 @@ export default class UserStore {
     getFacebookLoginStatus = async () => {
         window.FB.getLoginStatus(response => {
             if (response.status === 'connected') {
-                this.fbAccessToken = response.authResponse.accessToken;
+                this.fbAccessToken = response.authResponse;
             }
         })
     }
 
     facebookLogin = () => {
         this.fbLoading = true;
+        const apiLogin = (authResponse: fb.AuthResponse) => {
 
-        const apiLogin = (accessToken: string) => {
-            agent.Account.fbLogin(accessToken).then(user => {
+            if (authResponse === null) {
+                runInAction(() => this.fbLoading = false)
+                return;
+            }
+            
+            agent.Account.fbLogin(authResponse.accessToken).then(user => {
                 store.commonStore.setToken(user.token);
                 runInAction(() => {
                     this.user = user;
@@ -76,7 +81,7 @@ export default class UserStore {
             apiLogin(this.fbAccessToken);
         } else {
             window.FB.login(response => {
-                apiLogin(response.authResponse.accessToken)
+                apiLogin(response.authResponse);
             }, {scope: 'public_profile,email'})
         }
     }

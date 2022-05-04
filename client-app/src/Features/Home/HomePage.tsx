@@ -33,6 +33,7 @@ export default observer (function HomePage(){
                                 color="facebook"
                                 content='Login with Facebook'
                                 onClick={userStore.facebookLogin}
+                                disabled={userStore.fbLoading}
                             />
                         </>
                     )}
