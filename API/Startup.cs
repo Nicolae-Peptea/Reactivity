@@ -52,7 +52,8 @@ namespace API
                 .BlockAllMixedContent()
                 .StyleSources(s => s.Self().CustomSources(
                     "https://fonts.googleapis.com",
-                    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+                    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css",
+                    "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI="
                     )
                 )
                 .FontSources(s => s.Self().CustomSources(
@@ -63,8 +64,16 @@ namespace API
                 )
                 .FormActions(s => s.Self())
                 .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
-                .ScriptSources(s => s.Self().CustomSources("sha256-nL1M5C65PrV+/MOIzjYehMVkddQ/mbwh5FYmidhF0UE="))
+                .ImageSources(s => s.Self().CustomSources(
+                    "https://res.cloudinary.com",
+                    "https://www.facebook.com/",
+                    "https://scontent.fotp3-3.fna.fbcdn.net",
+                    "blob:",
+                    "data:"))
+                .ScriptSources(s => s.Self().CustomSources(
+                    "sha256-nL1M5C65PrV+/MOIzjYehMVkddQ/mbwh5FYmidhF0UE=",
+                    "https://connect.facebook.net/",
+                    "sha256-4RO1j8y5YMM/n0JAQZGn6ELmfHaT8t3Pwvp1UB7M6ZQ="))
                 );
 
 

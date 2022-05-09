@@ -36,15 +36,13 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true&&set SSL_CRT_FILE=D:\\ssl\\localhost_react.crt&&set SSL_KEY_FILE=D:\\ssl\\localhost_react.key&&react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "move build ../API/wwwroot",
+    "postbuild": "rimraf ../API/wwwroot && move build ../API/wwwroot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "proxy": "http://localhost:5000",
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -64,9 +62,11 @@
     ]
   },
   "devDependencies": {
+    "@types/facebook-js-sdk": "^3.3.5",
     "@types/react-datepicker": "^4.3.2",
     "@types/uuid": "^8.3.3",
     "@types/yup": "^0.29.13",
-    "react-datepicker": "^4.5.0"
+    "react-datepicker": "^4.5.0",
+    "rimraf": "^3.0.2"
   }
 }
