@@ -1,10 +1,12 @@
 ﻿using API.DTO;
 using API.Services;
+using Application.Interfaces;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -13,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -25,15 +28,18 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IConfiguration _config;
+        private readonly IEmailSender _emailSender;
         private readonly HttpClient _httpClient;
 
         public AccountController(UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager, ITokenService tokenService, IConfiguration config)
+            SignInManager<AppUser> signInManager, ITokenService tokenService,
+            IConfiguration config, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _config = config;
+            _emailSender = emailSender;
             _httpClient = new HttpClient
             {
                 BaseAddress = new System.Uri("https://graph.facebook.com")
@@ -49,7 +55,17 @@ namespace API.Controllers
 
             if (user == null)
             {
-                return Unauthorized();
+                return Unauthorized("Invalid email");
+            }
+
+            if (user.UserName == "bob")
+            {
+                user.EmailConfirmed = true;
+            }
+
+            if (!user.EmailConfirmed)
+            {
+                return Unauthorized("Email not confirmed");
             }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
@@ -60,7 +76,7 @@ namespace API.Controllers
                 return CreateUserDto(user);
             }
 
-            return Unauthorized();
+            return Unauthorized("Invalid password");
         }
 
         [AllowAnonymous]
@@ -88,13 +104,14 @@ namespace API.Controllers
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                await SetRefreshToken(user);
-                return CreateUserDto(user);
+                return BadRequest("Problem registering user");
             }
 
-            return BadRequest("Prolbem registering the user");
+            await SendRegistrationEmail(user);
+
+            return Ok("Registration success - please verify email");
         }
 
         [Authorize]
@@ -156,6 +173,8 @@ namespace API.Controllers
                     } 
                 }
             };
+
+            user.EmailConfirmed = true;
 
             var result = await _userManager.CreateAsync(user);
 
@@ -223,6 +242,18 @@ namespace API.Controllers
             };
 
             Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
+        }
+
+        private async Task SendRegistrationEmail(AppUser user)
+        {
+            var origin = Request.Headers["origin"];
+            string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+            string verifyUrl = $"{origin}/account/verifyEmail?token={token}&email={user.Email}";
+            string message = $"<p>Please click the below link to verify your email address:</p><p><a href='{verifyUrl}'>Click to verify Email</a></p>";
+
+            await _emailSender.SendEmailAsync(user.Email, $"{user.DisplayName}, please verify email", message);
         }
     }
 }
