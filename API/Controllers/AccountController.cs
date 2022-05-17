@@ -58,7 +58,8 @@ namespace API.Controllers
                 return Unauthorized("Invalid email");
             }
 
-            if (user.UserName == "bob")
+            // allows the test user accounts to login without asking for email confirmation 
+            if (user.UserName == "bob" || user.UserName == "jane" || user.UserName == "tom")
             {
                 user.EmailConfirmed = true;
             }
@@ -113,6 +114,61 @@ namespace API.Controllers
 
             return Ok("Registration success - please verify email");
         }
+
+        [AllowAnonymous]
+        [HttpPost("verifyEmail")]
+        public async Task<IActionResult> VerifyEmail(string email, string token)
+        {
+            if (String.IsNullOrEmpty(email))
+            {
+                return BadRequest("There is no email address send to verify");
+            }
+
+            if (String.IsNullOrEmpty(token))
+            {
+                return BadRequest("There is no token send to verify");
+            }
+
+            var user = await _userManager.FindByEmailAsync(email);
+            
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            if (user.EmailConfirmed)
+            {
+                return Ok("Email already confirmed");
+            }
+
+            var decodedTokenBytes = WebEncoders.Base64UrlDecode(token);
+            var decodedToken = Encoding.UTF8.GetString(decodedTokenBytes);
+            var result = await _userManager.ConfirmEmailAsync(user, decodedToken);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Could not verify email address");
+            }
+
+            return Ok("Email Confirmed - you can now login");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("resendEmailConfirmationLink")]
+        public async Task<IActionResult> ResendEmailConfimrationLink(string email)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            await SendRegistrationEmail(user);
+
+            return Ok("Email Verification link resent");
+        }
+
 
         [Authorize]
         [HttpGet]
