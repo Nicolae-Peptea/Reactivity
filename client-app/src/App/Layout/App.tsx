@@ -16,6 +16,8 @@ import LoadingComponent from './LoadingComponents';
 import ModalContainer from '../Common/Modals/ModalContainer';
 import ProfilePage from '../../Features/Profiles/ProfilePage';
 import PrivateRoute from './PrivateRoute';
+import RegisterSuccess from '../../Features/Users/RegisterSuccess';
+import ConfirmEmail from '../../Features/Users/ConfirmEmail';
 
 function App() {
 
@@ -53,6 +55,8 @@ function App() {
                 <PrivateRoute path='/profiles/:username' component={ProfilePage} />
                 <PrivateRoute path='/errors' component={TestErrors} />
                 <Route path='/server-error' component={ServerError} />
+                <Route path='/account/registerSuccess' component={RegisterSuccess} />
+                <Route path='/account/verifyEmail' component={ConfirmEmail} />
                 <Route component={NotFound}/>
               </Switch>
             </Container>
