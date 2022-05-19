@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -29,17 +30,19 @@ namespace API.Controllers
         private readonly ITokenService _tokenService;
         private readonly IConfiguration _config;
         private readonly IEmailSender _emailSender;
+        private readonly IHostEnvironment _env;
         private readonly HttpClient _httpClient;
 
         public AccountController(UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager, ITokenService tokenService,
-            IConfiguration config, IEmailSender emailSender)
+            IConfiguration config, IEmailSender emailSender, IHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _config = config;
             _emailSender = emailSender;
+            _env = env;
             _httpClient = new HttpClient
             {
                 BaseAddress = new System.Uri("https://graph.facebook.com")
@@ -59,7 +62,7 @@ namespace API.Controllers
             }
 
             // allows the test user accounts to login without asking for email confirmation 
-            if (user.UserName == "bob" || user.UserName == "jane" || user.UserName == "tom")
+            if (user.UserName == "bob" || user.UserName == "tom")
             {
                 user.EmailConfirmed = true;
             }
@@ -117,16 +120,21 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("verifyEmail")]
-        public async Task<IActionResult> VerifyEmail(string email, string token)
+        public async Task<IActionResult> VerifyEmail(string token, string email)
         {
+
             if (String.IsNullOrEmpty(email))
             {
-                return BadRequest("There is no email address send to verify");
-            }
+                return _env.IsDevelopment() ?
+                    BadRequest("There is no email address received by verify email endpoint") :
+                    BadRequest("Something went wrong along the way");
+            }               
 
             if (String.IsNullOrEmpty(token))
             {
-                return BadRequest("There is no token send to verify");
+                return _env.IsDevelopment() ?
+                    BadRequest("There is no token received by verify email endpoint") :
+                    BadRequest("Something went wrong along the way");
             }
 
             var user = await _userManager.FindByEmailAsync(email);
