@@ -4,10 +4,6 @@ using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,10 +29,10 @@ namespace Application.Followers
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var observer = await _dataContext.Users.FirstOrDefaultAsync(x => 
+                var observer = await _dataContext.Users.FirstOrDefaultAsync(x =>
                     x.UserName == _userAccessor.GetUserName());
 
-                var target = await _dataContext.Users.FirstOrDefaultAsync(x => 
+                var target = await _dataContext.Users.FirstOrDefaultAsync(x =>
                     x.UserName == request.TargetUsername);
 
                 if (target == null)

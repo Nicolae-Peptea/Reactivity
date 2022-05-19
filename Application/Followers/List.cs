@@ -1,16 +1,14 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using Persistence;
+﻿using Application.Core;
+using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Application.Core;
-using Application.Interfaces;
+using Persistence;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Followers
 {
@@ -54,7 +52,7 @@ namespace Application.Followers
                         profiles = await _dataContext.UserFollowings
                             .Where(x => x.Observer.UserName == request.Username)
                             .Select(u => u.Target)
-                            .ProjectTo<Profiles.Profile>(_mapper.ConfigurationProvider, 
+                            .ProjectTo<Profiles.Profile>(_mapper.ConfigurationProvider,
                                  new { currentUsername = _userAccessor.GetUserName() })
                             .ToListAsync();
                         break;

@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -13,10 +12,10 @@ namespace API.Controllers
     public class ActivitiesController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> GetActivities([FromQuery]ActivityParams parameters)
+        public async Task<IActionResult> GetActivities([FromQuery] ActivityParams parameters)
         {
             Result<PagedList<ActivityDto>> result = await Mediator.Send(new List.Query
-                { Params = parameters });
+            { Params = parameters });
 
             return HandlePagedResult(result);
         }

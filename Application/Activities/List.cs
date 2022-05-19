@@ -3,12 +3,10 @@ using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace Application.Activities
 {
@@ -43,7 +41,7 @@ namespace Application.Activities
 
                 if (request.Params.IsGoing && !request.Params.IsHost)
                 {
-                    query = query.Where(x => x.Attendees    
+                    query = query.Where(x => x.Attendees
                         .Any(a => a.Username == _userAccessor.GetUserName()));
                 }
 
@@ -57,7 +55,7 @@ namespace Application.Activities
                         query, request.Params.PageNumber, request.Params.PageSize
                     )
                 );
-            }   
+            }
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Application.Activities;
 using Application.Comments;
-using AutoMapper;
 using Domain;
 using System.Linq;
 
@@ -47,7 +46,7 @@ namespace Application.Core
                 .ForMember(d => d.Date, o => o.MapFrom(s => s.Activity.Date))
                 .ForMember(d => d.Title, o => o.MapFrom(s => s.Activity.Title))
                 .ForMember(d => d.Category, o => o.MapFrom(s => s.Activity.Category))
-                .ForMember(d => d.HostUsername, o => o.MapFrom(s => 
+                .ForMember(d => d.HostUsername, o => o.MapFrom(s =>
                     s.Activity.Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
         }
     }

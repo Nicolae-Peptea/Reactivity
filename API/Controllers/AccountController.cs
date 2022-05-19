@@ -128,7 +128,7 @@ namespace API.Controllers
                 return _env.IsDevelopment() ?
                     BadRequest("There is no email address received by verify email endpoint") :
                     BadRequest("Something went wrong along the way");
-            }               
+            }
 
             if (String.IsNullOrEmpty(token))
             {
@@ -138,7 +138,7 @@ namespace API.Controllers
             }
 
             var user = await _userManager.FindByEmailAsync(email);
-            
+
             if (user == null)
             {
                 return Unauthorized();
@@ -227,14 +227,14 @@ namespace API.Controllers
                 DisplayName = (string)fbInfo.name,
                 Email = (string)fbInfo.email,
                 UserName = (string)fbInfo.id,
-                Photos = new List<Photo> 
-                { 
-                    new Photo 
-                    { 
+                Photos = new List<Photo>
+                {
+                    new Photo
+                    {
                         Id = $"fb_{(string)fbInfo.id}",
                         Url=(string)fbInfo.picture.data.url,
                         IsMain = true
-                    } 
+                    }
                 }
             };
 
