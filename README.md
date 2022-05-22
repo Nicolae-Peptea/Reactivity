@@ -42,34 +42,38 @@ Reactivities is a social app where the user can spread the word about the activi
 
 ### Main Features
 
-- Sort Products by Category and Supplier
 - Register (the account is enabled after email confirmation)
-- Login using Identity Package with cookies
+- Facebook reagistration
+- Login using Identity Package with refresh JWT
 - Logout
-- Add to Cart
-- Cart Preview
-- Edit cart items quantity from the Cart Preview (Increase, Decrease, Remove)
-- Place an order with or without an account
-- Pay by credit card using Stripe
-- User Dashboard - Placed orders details
-- Email confirmation for both user registration and orders
-- Event logging
+- Add/Delete/Edit an activity
+- Own/Attend and activity
+- Activity chat
+- Sort and filter the activities
+- Follow/Unfollow users
+- Upload profile pictures
+- User details page
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
-* MVC design pattern
-* Uses React.Js for the Order History page
+* Clean Architecture
+* CQRS with Mediator desgin pattern
+* Web API
 
 Back End:
-* [ASP .NET Core][asp-net-core]
+* [ASP .NET Core 5][asp-net-core]
 * [C#][c#]
 * [Entity Framework Core][ef-core]
 * [AutoMapper][auto-mapper]
 
 Security:
 * [Identity][identity-core]
+* 
+
+Chat:
+* [SignalR][singal-R]
 
 Front End:
 * [HTML][html]
@@ -243,6 +247,7 @@ Thanks for all the support to the Codecool mentors that have guided us!
 [ssms]: https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15
 [visual-studio]: https://visualstudio.microsoft.com/
 [identity-core]: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio
+[signal-R]: https://dotnet.microsoft.com/en-us/apps/aspnet/signalr
 
 [mihai-buga]: https://github.com/mihaibuga
 [nicolae-peptea]: https://github.com/Nicolae-Peptea
@@ -259,7 +264,7 @@ Thanks for all the support to the Codecool mentors that have guided us!
 
 [serilog]: https://serilog.net/
 
-[home-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/home-page_hh7jfv.png
+[home-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653228196/Reactivties/home_page_extvsd.png
 [empty-cart]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429623/CodeCoolShop/empty-cart_mjprbo.png
 [register-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/register-page_mmukdc.png
 [login-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429633/CodeCoolShop/login-page_txknrt.png
