@@ -1,7 +1,7 @@
 
 <div id="top"></div>
 
-# Online Shop
+# Reactivities
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -23,7 +23,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#development-team">Development Team</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -33,7 +32,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Codecool shop is an online shop you can use to buy gadgets like phones and tablets
+Reactivities is a social app where the user can spread the word about the activities is hosting or attending, follow other users and talk about different activties with other members from the comunity
 
 ![home-page.png][home-page]
 
