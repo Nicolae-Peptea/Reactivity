@@ -53,6 +53,7 @@ Reactivities is a social app where the user can spread the word about the activi
 - Follow/Unfollow users
 - Upload profile pictures
 - User details page
+- Input validation for client and backend
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -67,28 +68,31 @@ Back End:
 * [C#][c#]
 * [Entity Framework Core][ef-core]
 * [AutoMapper][auto-mapper]
+* [FluentValidation][fluent-validation]
 
 Security:
 * [Identity][identity-core]
-* 
+* [JWT][jwt] 
 
 Chat:
-* [SignalR][singal-R]
+* [SignalR][signal-R]
 
 Front End:
 * [HTML][html]
 * [CSS][css]
-* [JavaScript][js]
-* [React.js][react]
-* [Bootstrap][bootstrap]
-* [JQuery][jquery]
+* [TypeScript][ts]
+* [React.js 17.0.2][react]
+* [MobX][mob-x]
+* [Semantic UI 2.0.4][semantic-ui]
+
 
 Database Management:
-* [Microsoft SQL Server][msql-server]
-* [Microsoft SQL Server Management Studio][ssms]
+* [PostgreSQL][postgres-server]
+* [pgAdmin][pgAdmin]
 
-IDE:
+Developing Tools:
 * [Microsoft Visual Studio][visual-studio]
+* [Microsoft Visual Studio Code][visual-studio-code]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -238,16 +242,19 @@ Thanks for all the support to the Codecool mentors that have guided us!
 [c#]: https://docs.microsoft.com/en-us/dotnet/csharp/
 [html]: https://html.com/
 [css]: https://www.w3.org/Style/CSS/Overview.en.html
-[js]: https://www.javascript.com/
+[ts]: https://www.typescriptlang.org/
 [react]: https://reactjs.org/
 [react-net]: https://reactjs.net/
-[bootstrap]: https://getbootstrap.com
-[jquery]: https://jquery.com
-[msql-server]: https://www.microsoft.com/en-us/sql-server/sql-server-2019
-[ssms]: https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15
+[postgres-server]: https://www.microsoft.com/en-us/sql-server/sql-server-2019](https://www.postgresql.org/
+[pgAdmin]: https://www.pgadmin.org/
 [visual-studio]: https://visualstudio.microsoft.com/
 [identity-core]: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio
 [signal-R]: https://dotnet.microsoft.com/en-us/apps/aspnet/signalr
+[jwt]: https://jwt.io/
+[fluent-validation]: https://docs.fluentvalidation.net/en/latest/
+[semantic-ui]: https://semantic-ui.com/
+[mob-x]: https://mobx.js.org/README.html
+[visual-studio-code]: https://code.visualstudio.com/
 
 [mihai-buga]: https://github.com/mihaibuga
 [nicolae-peptea]: https://github.com/Nicolae-Peptea
