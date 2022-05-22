@@ -53,7 +53,8 @@ namespace API
                 .StyleSources(s => s.Self().CustomSources(
                     "https://fonts.googleapis.com",
                     "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css",
-                    "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI="
+                    "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI=",
+                    "sha256-r3x6D0yBZdyG8FpooR5ZxcsLuwuJ+pSQ/80YzwXS5IU="
                     )
                 )
                 .FontSources(s => s.Self().CustomSources(
