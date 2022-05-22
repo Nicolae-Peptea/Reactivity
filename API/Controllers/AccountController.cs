@@ -58,7 +58,7 @@ namespace API.Controllers
 
             if (user == null)
             {
-                return Unauthorized("Invalid email");
+                return Unauthorized("Invalid credentials");
             }
 
             // allows the test user accounts to login without asking for email confirmation 
@@ -80,7 +80,7 @@ namespace API.Controllers
                 return CreateUserDto(user);
             }
 
-            return Unauthorized("Invalid password");
+            return Unauthorized("Invalid credentials");
         }
 
         [AllowAnonymous]
