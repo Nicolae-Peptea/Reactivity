@@ -102,11 +102,9 @@ Developing Tools:
 Email:
 * [Sendgrid][sendgrid]
 
-Payment processing:
-* [Stripe][stripe]
+Third party login:
+* [Facebook SDK][facebook-sdk]
 
-Event logging:
-* [Serilog][serilog]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -212,19 +210,12 @@ Run the project with Kestrel Server.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-## Development Team
-
-* [Mihai Buga's GitHub][mihai-buga]
-* [Nicolae Peptea's GitHub][nicolae-peptea]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Thanks for all the support to the Codecool mentors that have guided us!
+This project is the result of Complete guide to building an app with .Net Core and React course from Udemy to which I added some improvements.
 
-[React.Js for ASP .NET MVC][react-net]
+Neil Cummings is a fantastic teacher
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -264,12 +255,7 @@ Thanks for all the support to the Codecool mentors that have guided us!
 [order-email]: https://res.cloudinary.com/dqwtm9fw1/raw/upload/v1642501179/CodeCoolShop/email-confirmation_tsqcmw.html
 [registration-email]: https://res.cloudinary.com/dqwtm9fw1/raw/upload/v1642501179/CodeCoolShop/email-confirmation_tsqcmw.html
 
-[stripe]: https://stripe.com/
-
-[stripeKey]: https://support.stripe.com/questions/locate-api-keys-in-the-dashboard#:~:text=Locate%20API%20keys%20in%20the%20Dashboard%20%3A%20Stripe%3A%20Help%20%26%20Support&text=Users%20with%20Administrator%20permissions%20can,and%20clicking%20on%20API%20Keys
-[registerStripe]: https://dashboard.stripe.com/register
-
-[serilog]: https://serilog.net/
+[facebook-sdk]: https://developers.facebook.com/docs/
 
 [home-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653228196/Reactivties/home_page_extvsd.png
 [empty-cart]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429623/CodeCoolShop/empty-cart_mjprbo.png
