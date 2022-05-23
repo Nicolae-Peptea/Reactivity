@@ -154,7 +154,12 @@ Pofile details page
 
 ### Installation
 
--  Create a PostgreSQL database
+- Install Node.js and Npm
+- go to client-app folder and run
+```
+npm run build
+```
+- Create a PostgreSQL database
 - Go to appsettings.json -> Fill in the ConnectionStrings section with the database Connection String
 
   ```json
@@ -190,7 +195,7 @@ Pofile details page
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Run the project with Kestrel Server.
+Run the web api by using Kestrel Server.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
