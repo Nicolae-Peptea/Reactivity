@@ -155,7 +155,17 @@ Pofile details page
 ### Installation
 
 - Install Node.js and Npm
-- go to client-app folder and run
+- Go to client-app => package.json and add the info below.
+```
+json
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+```
+- Go to client-app folder and run in terminal this will set up the react app
 ```
 npm run build
 ```
