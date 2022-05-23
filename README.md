@@ -154,44 +154,33 @@ Pofile details page
 
 ### Installation
 
--  Create a MSSQL database
+-  Create a PostgreSQL database
 - Go to appsettings.json -> Fill in the ConnectionStrings section with the database Connection String
 
   ```json
       "ConnectionStrings": {
-        "CodeCoolShop": "<your-database-connection-string-comes-here>",
+        "DefaultConnection": "<your-database-connection-string-comes-here>",
       }
   ```
 
-- Create a Stripe account [here][registerStripe]
-- Go to appsettings.json ->Fill in the Stripe - SecretKey and Publishable Key [how to locate them in your Stripe account][stripeKey]
-    ```json
-      "Stripe": {
-        "SecretKey": "<your-stripe-secret-key-comes-here>",
-         "PublishableKey": "<your-stripe-publishable-key-comes-here>"
-      },
-    ```
+  
+  
 - Create a SendGrid account [here](https://signup.sendgrid.com/)
-- Go to appsettings.json -> Fill in the ApiKey related to your Sendgrid account. Take a look on how to create it in your account [here][sendgrid-key]
+- Go to appsettings.json -> Fill in the ApiKey, User and Email related to your Sendgrid account. Take a look on how to create it in your account [here][sendgrid-key]
 	```json
       "Sendgrid": {
-        "ApiKey": "<your-sendgrid-api-key-comes-here>"
+        "Key": "<your-sendgrid-api-key-comes-here>",
+	"User": "<your-user-comes-here>",
+	"Email": "<your-sender-email-address-comes-here>"
       }
 	```
-- Create you sender profile on SendGrid and update the field from appsettings.json
+- Create a Cloudinary Account and update the fields from appsettings.json related to your account details
 	```json
-      "Sendgrid": {
-        "SenderEmail": "<your-sender-email-comes-here>"
-      }
-	```
-- Create dynamic template for Order Confirmation => use this html template [here][order-email]
--  Create dynamic template for Register Confirmation => use this html template [here][registration-email]
-- Update the templates ids
-	```json
-      "Sendgrid": {
-            "OrderConfirmationTemplateId": "<email-template-id>",
-		    "AccountConfirmationTemplateId": "<email-template-id>"
-      }
+     "Cloudinary": {
+	    "CloudName": "",
+	    "ApiKey": "",
+	    "ApiSecret": ""
+ 	 },
 	```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
