@@ -110,45 +110,41 @@ Third party login:
 
 ### Visuals
 
-Empty Cart:
+Landing Page
 
-![empty-cart.png][empty-cart]
+![landing-page.png][landing-page]
 
-Register Page:
+Register Page
 
 ![register-page.png][register-page]
 
-Login Page:
+Login Page
 
 ![login-page.png][login-page]
 
-Home Page while logged in
+Login / register with Facebook
 
-![logged-in-home-page.png][logged-in-home-page]
+![login-facebook.png][login-facebook]
 
-Used Dashboard - Orders:
+Main page:
 
-![user-dashboard.png][user-dashboard]
+![home-page.png][home-page]
 
-Filled Cart Preview from the Home Page:
+Activity details page
 
-![items-in-cart.png][items-in-cart]
+![activity-details.png][activity-details]
 
-Cart state before Checkout:
+Add activity from
 
-![pre-checkout-cart-preview.png][pre-checkout-cart-preview]
+![create-activity.png][create-activity]
 
-Delivery details form:
+Edit activity form
 
-![delivery-details.png][delivery-details]
+![edit-activity.png][edit-activity]
 
-Successful Order Placement Notification Page:
+Pofile details page
 
-![successful-order.png][successful-order]
-
-User Dashboard - Order Details:
-
-![placed-order-details.png][placed-order-details]
+![profile-page.png][profile-page]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -258,14 +254,12 @@ Neil Cummings is a fantastic teacher
 [facebook-sdk]: https://developers.facebook.com/docs/
 
 [home-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653228196/Reactivties/home_page_extvsd.png
-[empty-cart]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429623/CodeCoolShop/empty-cart_mjprbo.png
-[register-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/register-page_mmukdc.png
-[login-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429633/CodeCoolShop/login-page_txknrt.png
-[logged-in-home-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/logged-in-home-page_xdem86.png
-[user-dashboard]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429633/CodeCoolShop/user-dashboard_ulsy8e.png
-[items-in-cart]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/items-in-cart_ggelhm.png
-[pre-checkout-cart-preview]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429633/CodeCoolShop/pre-checkout-cart-preview_zwezdv.png
-[delivery-details]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429612/CodeCoolShop/delivery-details_mqbys6.png
-[successful-order]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429634/CodeCoolShop/successful-order_ycmwbf.png
-[placed-order-details]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1642429633/CodeCoolShop/placed-order-details_rm8xz0.png
+[landing-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653313970/Reactivties/lading-page_imdpd1.png
+[register-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317821/Reactivties/register_crbjdz.png
+[login-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317876/Reactivties/login_iq3kur.png
+[login-facebook]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317920/Reactivties/facebook-login_fkqv6j.png
+[activity-details]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318501/Reactivties/activity-details_zv0r4m.png
+[create-activity]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318866/Reactivties/create-activity_zand5m.png
+[edit-activity]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318870/Reactivties/edit-activities_idzpsp.png
+[profile-page]: https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653319162/Reactivties/profile-page_pa9pi2.png
 
