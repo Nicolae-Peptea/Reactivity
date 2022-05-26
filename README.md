@@ -156,8 +156,7 @@ Pofile details page
 
 - Install Node.js and Npm
 - Go to client-app => package.json and add the info below.
-```
-json
+```json
 "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -165,9 +164,9 @@ json
     "eject": "react-scripts eject"
   },
 ```
-- Go to client-app folder and run in terminal this will set up the react app
+- Open the folder client-app in terminal and run
 ```
-npm run build
+npm install
 ```
 - Create a PostgreSQL database
 - Go to appsettings.json -> Fill in the ConnectionStrings section with the database Connection String
@@ -177,8 +176,6 @@ npm run build
         "DefaultConnection": "<your-database-connection-string-comes-here>",
       }
   ```
-
-  
   
 - Create a SendGrid account [here](https://signup.sendgrid.com/)
 - Go to appsettings.json -> Fill in the ApiKey, User and Email related to your Sendgrid account. Take a look on how to create it in your account [here][sendgrid-key]
@@ -197,7 +194,12 @@ npm run build
 	    "ApiSecret": ""
  	 },
 	```
-
+- If you want to test the Facebook login feature in a development environment you have to create a SSL certificate for the local host. You have an example in this [video][ssl-certificate-video]
+- Add the line below to the package.json file from client-app folder to enbale HTTPS connection for the localhost 
+```json
+ "scripts": {
+    "start": "set HTTPS=true&&set SSL_CRT_FILE=<the path to .crt file from your local machine>&&set SSL_KEY_FILE=<the path to .key file from your local machine>&&react-scripts start"
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -205,7 +207,24 @@ npm run build
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Run the web api by using Kestrel Server.
+To login in the app from both Heroku and development use these credentials:
+
+- Email: bob@test.com
+- Email: tom@test.com
+
+To test facebook login from Heroku use:
+- Email: samantha_uhubxff_fergiesen@tfbnw.net
+- Email: barbara_zpcalos_letuchysky@tfbnw.net
+
+The password for thsese is users is: Pa$$w0rd
+
+For the development 
+
+Run the web api using Kestrel Server
+Run the react.js server
+```
+npm run
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -246,9 +265,7 @@ Neil Cummings is a fantastic teacher
 [semantic-ui]: https://semantic-ui.com/
 [mob-x]: https://mobx.js.org/README.html
 [visual-studio-code]: https://code.visualstudio.com/
-
-[mihai-buga]: https://github.com/mihaibuga
-[nicolae-peptea]: https://github.com/Nicolae-Peptea
+[ssl-certificate-video]: https://www.youtube.com/watch?v=f9ZadlfSIDI&ab_channel=RyudithTutorial
 
 [sendgrid]: https://sendgrid.com/
 [sendgrid-key]: https://docs.sendgrid.com/ui/account-and-settings/api-keys#managing-api-keys
