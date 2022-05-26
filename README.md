@@ -216,15 +216,12 @@ To test facebook login from Heroku use:
 - Email: samantha_uhubxff_fergiesen@tfbnw.net
 - Email: barbara_zpcalos_letuchysky@tfbnw.net
 
-The password for thsese is users is: Pa$$w0rd
+The password for these users is: Pa$$w0rd
 
 For the development 
 
-Run the web api using Kestrel Server
-Run the react.js server
-```
-npm run
-```
+- Run the web api using Kestrel Server
+- Open the client-app folder in terminal and run the react.js server with "npm start" command 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
