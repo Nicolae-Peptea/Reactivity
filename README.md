@@ -229,9 +229,9 @@ For the development
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-This project is the result of Complete guide to building an app with .Net Core and React course from Udemy to which I added some improvements.
+This project is the result of Complete guide to building an app with .Net Core and React course from [Udemy][udemy-link] to which I added some improvements.
 
-Neil Cummings is a fantastic teacher
+[Neil Cummings][neil-cummings-github] is a fantastic teacher
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -263,6 +263,8 @@ Neil Cummings is a fantastic teacher
 [mob-x]: https://mobx.js.org/README.html
 [visual-studio-code]: https://code.visualstudio.com/
 [ssl-certificate-video]: https://www.youtube.com/watch?v=f9ZadlfSIDI&ab_channel=RyudithTutorial
+[neil-cummings-github]: https://github.com/TryCatchLearn
+[udemy-link]: https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/
 
 [sendgrid]: https://sendgrid.com/
 [sendgrid-key]: https://docs.sendgrid.com/ui/account-and-settings/api-keys#managing-api-keys
