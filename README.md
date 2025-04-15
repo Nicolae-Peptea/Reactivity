@@ -64,7 +64,7 @@ Reactivities is a social app where the user can spread the word about the activi
 * Web API
 
 Back End:
-* [ASP .NET Core 5][asp-net-core]
+* [.NET Core 8][asp-net-core]
 * [C#][c#]
 * [Entity Framework Core][ef-core]
 * [AutoMapper][auto-mapper]
@@ -81,9 +81,10 @@ Front End:
 * [HTML][html]
 * [CSS][css]
 * [TypeScript][ts]
-* [React.js 17.0.2][react]
+* [React.js 18.3.1][react]
 * [MobX][mob-x]
-* [Semantic UI 2.0.4][semantic-ui]
+* [Axios][mob-x]
+* [Semantic UI 2.1.5][semantic-ui]
 
 
 Database Management:
