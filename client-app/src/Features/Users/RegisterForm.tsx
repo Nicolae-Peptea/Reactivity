@@ -1,6 +1,5 @@
 import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
-import React from "react";
 import { Button, Header } from "semantic-ui-react";
 import MyTextInput from "../../App/Common/Form/MyTextInput";
 import { useStore } from "../../App/Stores/store";
@@ -9,6 +8,7 @@ import ValidationErrors from "../Errors/ValidationErrors";
 
 export default observer (function RegisterForm(){
     const {userStore} = useStore();
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/;
     return(
         <Formik
             initialValues={{displayName:"", userName:"", email: "", password: "", error: null}}
@@ -20,7 +20,12 @@ export default observer (function RegisterForm(){
                 displayName: Yup.string().required(),
                 userName: Yup.string().required(),
                 email: Yup.string().required().email(),
-                password: Yup.string().required(),
+                password: Yup.string()
+                    .required("Password is required")
+                    .matches(
+                    passwordRegex,
+                    "Password must be 4-12 characters, include at least one uppercase letter, one lowercase letter, and one number"
+                ),
             })}
         >
             {({handleSubmit, isSubmitting, errors, isValid, dirty}) => (
