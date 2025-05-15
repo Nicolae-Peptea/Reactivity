@@ -3,9 +3,16 @@ import React, { Fragment } from "react";
 import Calendar from "react-calendar";
 import { Header, Menu } from "semantic-ui-react";
 import { useStore } from "../../../App/Stores/store";
+import { Value } from "react-calendar/dist/cjs/shared/types";
 
 export default observer (function ActivityFilters() {
     const {activityStore: {predicate, setPredicate}} = useStore();
+
+    const handleDateChange = (value: Value) => {
+        if (value instanceof Date) {
+            setPredicate('startDate', value);
+        }
+    };
 
     return (
         <Fragment>
@@ -28,8 +35,8 @@ export default observer (function ActivityFilters() {
                 />
             </Menu>
             <Header />
-            <Calendar 
-                onChange={(date: Date) => setPredicate('startDate', date)}
+            <Calendar
+                onChange={handleDateChange}
                 value={predicate.get('startDate') || new Date()}
             />
         </Fragment>
