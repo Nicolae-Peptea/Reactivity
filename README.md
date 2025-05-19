@@ -177,7 +177,7 @@ npm install
         "DefaultConnection": "<your-database-connection-string-comes-here>",
       }
   ```
-  
+- Run the Reactivity API. On the first run, it will automatically seed the database with initial data.
 - Create a Resend account [here](https://resend.com/signup)
 - Create an API Key [here](https://resend.com/api-keys)
 - Go to appsettings.json -> Fill in the Api Token for the API key created. 
