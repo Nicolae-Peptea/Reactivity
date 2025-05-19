@@ -183,7 +183,7 @@ npm install
 - Go to appsettings.json -> Fill in the Api Token for the API key created. 
 	```json
       "Resend": {
-    	"ApiToken": "re_A5QQsjXC_5rUYiWtuNBsCT8zM8vCRtGBH"
+    	"ApiToken": ""
 	```
 - Create a Cloudinary Account and update the fields from appsettings.json related to your account details
 	```json
