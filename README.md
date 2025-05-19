@@ -3,234 +3,260 @@
 
 # Reactivities
 
-<!-- TABLE OF CONTENTS -->
+A social app for sharing and exploring community activities. Users can create events, follow others, and engage in real-time chat.
+
+---
+
 <details>
-  <summary>Table of Contents</summary>
+  <summary>📘 Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#main-features">Main Features</a></li>
-        <li><a href="#integrated-services">Integrated Services</a></li>
-        <li><a href="#built-with">Built With</a></li>
-        <li><a href="#visuals">Visuals</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About the Project</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#tech-stack">Tech Stack</a></li>
+    <li><a href="#integrations">Integrations</a></li>
+    <li><a href="#visuals">Visuals</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
+---
 
+## 🧹 About the Project
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+**Reactivities** is a social platform where users can:
 
-Reactivities is a social app where the user can spread the word about the activities is hosting or attending, follow other users and talk about different activties with other members from the comunity
+* Share activities they host or attend
+* Connect and chat with other community members
+* Follow users and explore events by category
 
-![home-page.png][home-page]
+![home-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653228196/Reactivties/home_page_extvsd.png)
 
+---
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+## 🚀 Features
 
+* Register (with email confirmation)
+* Facebook registration
+* Login/logout using JWT with refresh tokens
+* Create, edit, and delete activities
+* Attend or own activities
+* Real-time chat in activity detail pages
+* Sort and filter activities
+* Follow/unfollow users
+* Profile picture uploads
+* View user profiles
+* Full client/server-side validation
 
-### Main Features
+---
 
-- Register (the account is enabled after email confirmation)
-- Facebook reagistration
-- Login using Identity Package with refresh JWT
-- Logout
-- Add/Delete/Edit an activity
-- Own/Attend and activity
-- Activity chat
-- Sort and filter the activities
-- Follow/Unfollow users
-- Upload profile pictures
-- User details page
-- Input validation for client and backend
+## 🧱 Tech Stack
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Built With
+### Architecture
 
 * Clean Architecture
-* CQRS with Mediator desgin pattern
-* Web API
+* CQRS with Mediator design pattern
 
-Back End:
-* [.NET Core 8][asp-net-core]
-* [C#][c#]
-* [Entity Framework Core][ef-core]
-* [AutoMapper][auto-mapper]
-* [FluentValidation][fluent-validation]
+### Backend
 
-Security:
-* [Identity][identity-core]
-* [JWT][jwt] 
+* [.NET Core 8](https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet-core)
+* [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+* [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+* [AutoMapper](https://automapper.org/)
+* [FluentValidation](https://docs.fluentvalidation.net/en/latest/)
+* [Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio)
+* [JWT](https://jwt.io/)
+* [SignalR](https://dotnet.microsoft.com/en-us/apps/aspnet/signalr)
 
-Chat:
-* [SignalR][signal-R]
+### Frontend
 
-Front End:
-* [HTML][html]
-* [CSS][css]
-* [TypeScript][ts]
-* [React.js 18.3.1][react]
-* [MobX][mob-x]
-* [Axios][mob-x]
-* [Semantic UI 2.1.5][semantic-ui]
+* [React 18.3.1](https://reactjs.org/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [MobX](https://mobx.js.org/README.html)
+* [Axios](https://axios-http.com/)
+* [Semantic UI 2.1.5](https://semantic-ui.com/)
 
+### Database
 
-Database Management:
-* [PostgreSQL][postgres-server]
-* [pgAdmin][pgAdmin]
+* [PostgreSQL](https://www.postgresql.org/)
+* [pgAdmin](https://www.pgadmin.org/)
 
-Developing Tools:
-* [Microsoft Visual Studio][visual-studio]
-* [Microsoft Visual Studio Code][visual-studio-code]
+### Tools
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+* [Visual Studio](https://visualstudio.microsoft.com/)
+* [VS Code](https://code.visualstudio.com/)
 
+---
 
-### Integrated Services
+## 🔗 Integrations
 
-Email:
-* [Resend][resend]
+### Email
 
-Third party login:
-* [Facebook SDK][facebook-sdk]
+* [Resend](https://resend.com/emails)
 
+### Social Login
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+* [Facebook SDK](https://developers.facebook.com/docs/)
 
-### Visuals
+---
 
-Landing Page
+## 🖼️ Visuals
 
-![landing-page.png][landing-page]
+* Landing Page
+  ![landing-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653313970/Reactivties/lading-page_imdpd1.png)
 
-Register Page
+* Register Page
+  ![register-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317821/Reactivties/register_crbjdz.png)
 
-![register-page.png][register-page]
+* Login Page
+  ![login-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317876/Reactivties/login_iq3kur.png)
 
-Login Page
+* Facebook Login
+  ![login-facebook.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653317920/Reactivties/facebook-login_fkqv6j.png)
 
-![login-page.png][login-page]
+* Home Page
+  ![home-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653228196/Reactivties/home_page_extvsd.png)
 
-Login / register with Facebook
+* Activity Details
+  ![activity-details.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318501/Reactivties/activity-details_zv0r4m.png)
 
-![login-facebook.png][login-facebook]
+* Create/Edit Activity
+  ![create-activity.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318866/Reactivties/create-activity_zand5m.png)
+  ![edit-activity.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653318870/Reactivties/edit-activities_idzpsp.png)
 
-Main page:
+* Profile Page
+  ![profile-page.png](https://res.cloudinary.com/dqwtm9fw1/image/upload/v1653319162/Reactivties/profile-page_pa9pi2.png)
 
-![home-page.png][home-page]
+---
 
-Activity details page
+## 🛠️ Getting Started
 
-![activity-details.png][activity-details]
+### Prerequisites
 
-Add activity from
+* Install [Node.js](https://nodejs.org/) and npm
+* Install [.NET Core 8 SDK](https://dotnet.microsoft.com/)
+* Install PostgreSQL
 
-![create-activity.png][create-activity]
+### 1. Clone the Repository
 
-Edit activity form
+```bash
+git clone https://github.com/your-username/reactivities.git
+cd reactivities
+```
 
-![edit-activity.png][edit-activity]
+### 2. Setup the Client
 
-Pofile details page
+* Go to `client-app` and ensure `package.json` includes:
 
-![profile-page.png][profile-page]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-### Installation
-
-- Install Node.js and Npm
-- Go to client-app => package.json and add the info below.
 ```json
 "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
 ```
-- Open the folder client-app in terminal and run
-```
+
+* Run:
+
+```bash
+cd client-app
 npm install
 ```
-- Create a PostgreSQL database
-- Go to appsettings.json -> Fill in the ConnectionStrings section with the database Connection String
 
-  ```json
-      "ConnectionStrings": {
-        "DefaultConnection": "<your-database-connection-string-comes-here>",
-      }
-  ```
-- Run the Reactivity API. On the first run, it will automatically seed the database with initial data.
-- Create a Resend account [here](https://resend.com/signup)
-- Create an API Key [here](https://resend.com/api-keys)
-- Go to appsettings.json -> Fill in the Api Token for the API key created. 
-	```json
-      "Resend": {
-    	"ApiToken": ""
-	```
-- Create a Cloudinary Account and update the fields from appsettings.json related to your account details
-	```json
-     "Cloudinary": {
-	    "CloudName": "",
-	    "ApiKey": "",
-	    "ApiSecret": ""
- 	 },
-	```
-- If you want to test the Facebook login feature in a development environment you have to create a SSL certificate for the local host. You have an example in this [video][ssl-certificate-video]
-- Add the line below to the package.json file from client-app folder to enbale HTTPS connection for the localhost 
+### 3. Setup the Server
+
+* Create a PostgreSQL database
+* Configure your connection string in `appsettings.json`:
+
 ```json
- "scripts": {
-    "start": "set HTTPS=true&&set SSL_CRT_FILE=<the path to .crt file from your local machine>&&set SSL_KEY_FILE=<the path to .key file from your local machine>&&react-scripts start"
+"ConnectionStrings": {
+  "DefaultConnection": "<your-database-connection-string>"
+}
 ```
-<p align="right">(<a href="#top">back to top</a>)</p>
 
+### 4. Configure Third-Party Services
 
+#### Resend (for emails)
 
-<!-- USAGE EXAMPLES -->
-## Usage
+* Create a [Resend account](https://resend.com/signup) and API Key
+* Add to `appsettings.json`:
 
-To login in the app from both Heroku and development use these credentials:
+```json
+"Resend": {
+  "ApiToken": "<your-resend-api-key>"
+}
+```
 
-- Email: bob@test.com
-- Email: tom@test.com
+#### Cloudinary (for image uploads)
 
-To test facebook login from Heroku use:
-- Email: samantha_uhubxff_fergiesen@tfbnw.net
-- Email: barbara_zpcalos_letuchysky@tfbnw.net
+```json
+"Cloudinary": {
+  "CloudName": "",
+  "ApiKey": "",
+  "ApiSecret": ""
+}
+```
 
-The password for these users is: Pa$$w0rd
+#### Facebook Login (Dev Environment)
 
-For the development 
+* Create an SSL certificate
+  [Watch this tutorial](https://www.youtube.com/watch?v=f9ZadlfSIDI&ab_channel=RyudithTutorial)
 
-- Run the web api using Kestrel Server
-- Open the client-app folder in terminal and run the react.js server with "npm start" command 
+* Enable HTTPS in `client-app/package.json`:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+```json
+"scripts": {
+  "start": "set HTTPS=true&&set SSL_CRT_FILE=<path-to-crt>&&set SSL_KEY_FILE=<path-to-key>&&react-scripts start"
+}
+```
 
+### 5. Run the App
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+* Start the API (`.NET` backend)
+  *On the first run, it will automatically seed the database with initial data.*
 
-This project is the result of Complete guide to building an app with .Net Core and React course from [Udemy][udemy-link] to which I added some improvements.
+* Start the client:
 
-[Neil Cummings][neil-cummings-github] is a fantastic teacher
+```bash
+cd client-app
+npm start
+```
+
+---
+
+## 💡 Usage
+
+### Login Credentials
+
+Demo users:
+
+* [bob@test.com](mailto:bob@test.com)
+* [tom@test.com](mailto:tom@test.com)
+
+Facebook test users (Heroku only):
+
+* [samantha\_uhubxff\_fergiesen@tfbnw.net](mailto:samantha_uhubxff_fergiesen@tfbnw.net)
+* [barbara\_zpcalos\_letuchysky@tfbnw.net](mailto:barbara_zpcalos_letuchysky@tfbnw.net)
+
+**Password for all users:** `Pa$$w0rd`
+
+### Development Mode
+
+* Run the Web API (via Kestrel)
+* Open a terminal in `client-app` and run:
+
+```bash
+npm start
+```
+
+---
+
+## 🙌 Acknowledgments
+
+This project was built while following the excellent [Udemy course](https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/) by [Neil Cummings](https://github.com/TryCatchLearn), with additional improvements.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
