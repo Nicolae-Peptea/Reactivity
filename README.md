@@ -101,7 +101,7 @@ Developing Tools:
 ### Integrated Services
 
 Email:
-* [Sendgrid][sendgrid]
+* [Resend][resend]
 
 Third party login:
 * [Facebook SDK][facebook-sdk]
@@ -178,14 +178,12 @@ npm install
       }
   ```
   
-- Create a SendGrid account [here](https://signup.sendgrid.com/)
-- Go to appsettings.json -> Fill in the ApiKey, User and Email related to your Sendgrid account. Take a look on how to create it in your account [here][sendgrid-key]
+- Create a Resend account [here](https://resend.com/signup)
+- Create an API Key [here](https://resend.com/api-keys)
+- Go to appsettings.json -> Fill in the Api Token for the API key created. 
 	```json
-      "Sendgrid": {
-        "Key": "<your-sendgrid-api-key-comes-here>",
-	"User": "<your-user-comes-here>",
-	"Email": "<your-sender-email-address-comes-here>"
-      }
+      "Resend": {
+    	"ApiToken": "re_A5QQsjXC_5rUYiWtuNBsCT8zM8vCRtGBH"
 	```
 - Create a Cloudinary Account and update the fields from appsettings.json related to your account details
 	```json
@@ -267,7 +265,7 @@ This project is the result of Complete guide to building an app with .Net Core a
 [neil-cummings-github]: https://github.com/TryCatchLearn
 [udemy-link]: https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/
 
-[sendgrid]: https://sendgrid.com/
+[resend]: https://resend.com/emails
 [sendgrid-key]: https://docs.sendgrid.com/ui/account-and-settings/api-keys#managing-api-keys
 [order-email]: https://res.cloudinary.com/dqwtm9fw1/raw/upload/v1642501179/CodeCoolShop/email-confirmation_tsqcmw.html
 [registration-email]: https://res.cloudinary.com/dqwtm9fw1/raw/upload/v1642501179/CodeCoolShop/email-confirmation_tsqcmw.html
