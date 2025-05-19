@@ -9,6 +9,7 @@ A social app for sharing and exploring community activities. Users can create ev
 
 <details>
   <summary>📘 Table of Contents</summary>
+  
   <ol>
     <li><a href="#about-the-project">About the Project</a></li>
     <li><a href="#features">Features</a></li>
