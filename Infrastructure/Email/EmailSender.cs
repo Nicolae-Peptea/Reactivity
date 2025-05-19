@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces;
 using Microsoft.Extensions.Configuration;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+using Resend;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Email
@@ -9,27 +8,25 @@ namespace Infrastructure.Email
     public class EmailSender : IEmailSender
     {
         private readonly IConfiguration _config;
+        private readonly IResend _emailSender;
 
-        public EmailSender(IConfiguration config)
+        public EmailSender(IConfiguration config, IResend emailSender)
         {
             _config = config;
+            _emailSender = emailSender;
         }
 
         public async Task SendEmailAsync(string userEmail, string emailSubject, string message)
         {
-            var client = new SendGridClient(_config["Sendgrid:Key"]);
-            var sendgridMessage = new SendGridMessage
+            var emailMessage = new EmailMessage
             {
-                From = new EmailAddress(_config["Sendgrid:Email"], _config["Sendgrid:User"]),
+                From = "whatever@resend.dev",
+                To = userEmail,
                 Subject = emailSubject,
-                PlainTextContent = message,
-                HtmlContent = message,
+                HtmlBody = message,
             };
 
-            sendgridMessage.AddTo(new EmailAddress(userEmail));
-            sendgridMessage.SetClickTracking(false, false);
-
-            await client.SendEmailAsync(sendgridMessage);
+            await _emailSender.EmailSendAsync(emailMessage);
         }
     }
 }
