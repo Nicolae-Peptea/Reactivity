@@ -174,7 +174,7 @@ docker compose up -d
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "<your-database-connection-string>"
+  "DefaultConnection": ""
 }
 ```
 
@@ -187,7 +187,7 @@ docker compose up -d
 
 ```json
 "Resend": {
-  "ApiToken": "<your-resend-api-key>"
+  "ApiToken": ""
 }
 ```
 
