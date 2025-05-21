@@ -79,8 +79,7 @@ A social app for sharing and exploring community activities. Users can create ev
 
 ### Database
 
-* [PostgreSQL](https://www.postgresql.org/)
-* [pgAdmin](https://www.pgadmin.org/)
+* [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server)
 
 ### Tools
 
@@ -134,9 +133,9 @@ A social app for sharing and exploring community activities. Users can create ev
 
 ### Prerequisites
 
-* Install [Node.js](https://nodejs.org/) and npm
+* Install [Node.js 20+](https://nodejs.org/) and npm
 * Install [.NET Core 8 SDK](https://dotnet.microsoft.com/)
-* Install PostgreSQL
+* Install [Docker](https://www.docker.com/)
 
 ### 1. Clone the Repository
 
@@ -167,12 +166,15 @@ npm install
 
 ### 3. Setup the Server
 
-* Create a PostgreSQL database
+* Go to the root of the Repo and run in the terminal
+```bash
+docker compose up -d
+```
 * Configure your connection string in `appsettings.json`:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "<your-database-connection-string>"
+  "DefaultConnection": ""
 }
 ```
 
@@ -185,7 +187,7 @@ npm install
 
 ```json
 "Resend": {
-  "ApiToken": "<your-resend-api-key>"
+  "ApiToken": ""
 }
 ```
 
