@@ -79,7 +79,7 @@ A social app for sharing and exploring community activities. Users can create ev
 
 ### Database
 
-* [Microsoft SQL Server](https://www.postgresql.org/](https://www.microsoft.com/en-us/sql-server)
+* [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server)
 
 ### Tools
 
