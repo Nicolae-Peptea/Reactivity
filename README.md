@@ -79,8 +79,7 @@ A social app for sharing and exploring community activities. Users can create ev
 
 ### Database
 
-* [PostgreSQL](https://www.postgresql.org/)
-* [pgAdmin](https://www.pgadmin.org/)
+* [Microsoft SQL Server]([https://www.postgresql.org/](https://www.microsoft.com/en-us/sql-server))
 
 ### Tools
 
