@@ -133,7 +133,7 @@ A social app for sharing and exploring community activities. Users can create ev
 
 ### Prerequisites
 
-* Install [Node.js 20+](https://nodejs.org/) and npm
+* Install [Node.js 20+](https://nodejs.org/) and [npm](https://www.npmjs.com/)
 * Install [.NET Core 8 SDK](https://dotnet.microsoft.com/)
 * Install [Docker](https://www.docker.com/)
 
