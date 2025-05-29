@@ -7,6 +7,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -44,7 +45,7 @@ else
 {
     app.Use(async (context, next) =>
     {
-        context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+        context.Response.Headers.Append("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
         await next.Invoke();
     });
 }
