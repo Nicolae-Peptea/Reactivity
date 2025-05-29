@@ -50,14 +50,6 @@ namespace API.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(List.Handler).Assembly));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
-            services.AddHttpClient<ResendClient>();
-            services.Configure<ResendClientOptions>(opt =>
-            {
-                opt.ApiToken = config["Resend:ApiToken"];
-            });
-
-            services.AddScoped<IResend, ResendClient>();
-
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.AddScoped<IEmailSender, EmailSender>();

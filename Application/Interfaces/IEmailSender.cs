@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
     public interface IEmailSender
     {
-        Task SendEmailAsync(string userEmail, string emailSubject, string message);
+        Task<HttpStatusCode> SendEmailAsync(string userEmail, string emailSubject, string message);
     }
 }

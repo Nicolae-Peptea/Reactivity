@@ -1,6 +1,10 @@
 ﻿using Application.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Resend;
+using Microsoft.Extensions.Logging;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Email
@@ -8,25 +12,42 @@ namespace Infrastructure.Email
     public class EmailSender : IEmailSender
     {
         private readonly IConfiguration _config;
-        private readonly IResend _emailSender;
 
-        public EmailSender(IConfiguration config, IResend emailSender)
+        public EmailSender(IConfiguration config)
         {
             _config = config;
-            _emailSender = emailSender;
         }
 
-        public async Task SendEmailAsync(string userEmail, string emailSubject, string message)
+        public async Task<HttpStatusCode> SendEmailAsync(string userEmail, string emailSubject, string message)
         {
-            var emailMessage = new EmailMessage
+            var client = new SendGridClient(_config["Sendgrid:ApiKey"]);
+            var fromEmailAddress = _config["Sendgrid:FromEmailAddress"];
+            var sendgridMessage = new SendGridMessage
             {
-                From = "whatever@resend.dev",
-                To = userEmail,
+                From = new EmailAddress(fromEmailAddress),
                 Subject = emailSubject,
-                HtmlBody = message,
+                PlainTextContent = message,
+                HtmlContent = message,
             };
 
-            await _emailSender.EmailSendAsync(emailMessage);
+            sendgridMessage.AddTo(new EmailAddress(userEmail));
+            sendgridMessage.SetClickTracking(false, false);
+            Response result = null;
+            try
+            {
+                result = await client.SendEmailAsync(sendgridMessage);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+            if (result.IsSuccessStatusCode)
+            {
+                return result.StatusCode;
+            }
+
+            return HttpStatusCode.BadRequest;
         }
     }
 }

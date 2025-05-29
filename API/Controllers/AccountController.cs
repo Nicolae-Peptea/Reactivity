@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
@@ -107,13 +108,17 @@ namespace API.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-
             if (!result.Succeeded)
             {
                 return BadRequest("Problem registering user");
             }
 
-            await SendRegistrationEmail(user);
+            var emailResult = await SendRegistrationEmail(user);
+
+            if (emailResult == HttpStatusCode.BadRequest)
+            {
+                return BadRequest("Registration success - please verify email");
+            }
 
             return Ok("Registration success - please verify email");
         }
@@ -308,7 +313,7 @@ namespace API.Controllers
             Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
         }
 
-        private async Task SendRegistrationEmail(AppUser user)
+        private async Task<HttpStatusCode> SendRegistrationEmail(AppUser user)
         {
             var origin = Request.Headers["origin"];
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -317,7 +322,9 @@ namespace API.Controllers
             string verifyUrl = $"{origin}/account/verifyEmail?token={token}&email={user.Email}";
             string message = $"<p>Please click the below link to verify your email address:</p><p><a href='{verifyUrl}'>Click to verify Email</a></p>";
 
-            await _emailSender.SendEmailAsync(user.Email, $"{user.DisplayName}, please verify email", message);
+            var result = await _emailSender.SendEmailAsync(user.Email, $"{user.DisplayName}, please verify email", message);
+
+            return result;
         }
     }
 }
