@@ -1,10 +1,8 @@
 ﻿using Application.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Email

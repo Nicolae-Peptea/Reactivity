@@ -1,19 +1,15 @@
 ﻿using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
-using Domain;
 using Infrastructure.Email;
 using Infrastructure.Photos;
 using Infrastructure.Security;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Persistence;
-using Resend;
-using System;
 
 namespace API.Extensions
 {
